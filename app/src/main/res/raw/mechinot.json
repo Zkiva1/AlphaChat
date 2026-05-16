@@ -1,0 +1,562 @@
+[
+    {
+        "name": "מכינת קשת יהודה",
+        "region": "צפון",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/keshet-yehuda",
+        "image": "https://mechinot.org.il/images/new-site-logos/keshet-yehuda.jpg"
+    },
+    {
+        "name": "מכינת אבנר - עכו",
+        "region": "צפון",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/avner",
+        "image": "https://mechinot.org.il/images/new-site-logos/2025-07-29_-222424.png"
+    },
+    {
+        "name": "מכינת עין פרת",
+        "region": "עמקים, מרכז/שפלה, דרום",
+        "gender": "בנות, מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/ein-porat",
+        "image": "https://mechinot.org.il/images/new-site-logos/ein-part.jpg"
+    },
+    {
+        "name": "מכינת כרם אל",
+        "region": "צפון",
+        "gender": "בנים",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/kerem-el",
+        "image": "https://mechinot.org.il/images/new-site-logos/kerem-el-800.png"
+    },
+    {
+        "name": "מכינת בני דוד",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/bney-david-ali",
+        "image": "https://mechinot.org.il/images/new-site-logos/bnei-david-ali.jpg"
+    },
+    {
+        "name": "מכינת ידידיה",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/yedidya",
+        "image": "https://mechinot.org.il/images/new-site-logos/yedidia.jpg"
+    },
+    {
+        "name": "מכינת חביבה רייק",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/haviva-raik",
+        "image": "https://mechinot.org.il/images/new-site-logos/chaviva-raik.jpg"
+    },
+    {
+        "name": "מכינת ימין אורד",
+        "region": "צפון",
+        "gender": "בנים",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/yemin-ord",
+        "image": "https://mechinot.org.il/images/new-site-logos/yamin-ord.jpg"
+    },
+    {
+        "name": "רוח השדה",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/windfield",
+        "image": "https://mechinot.org.il/images/new-site-logos/ruach-hasade.jpg"
+    },
+    {
+        "name": "מכינת איתן",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/eitan",
+        "image": "https://mechinot.org.il/images/new-site-logos/eitan.jpg"
+    },
+    {
+        "name": "מכינת מיתרים לכיש",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/meitar-lachish",
+        "image": "https://mechinot.org.il/images/new-site-logos/meitarim-lachis.jpg"
+    },
+    {
+        "name": "מכינת רוח נכון",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/2016-10-08-18-44-42",
+        "image": "https://mechinot.org.il/images/new-site-logos/ruachnahon.jpg"
+    },
+    {
+        "name": "מכינת דרך אבות",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/2025-11-11-21-08-18",
+        "image": "https://mechinot.org.il/images/logos/--.png"
+    },
+    {
+        "name": "מכינת לביא",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/2025-11-04-11-57-19",
+        "image": "https://mechinot.org.il/images/logos/WhatsApp_Image_2025-11-03_at_185143.jpeg"
+    },
+    {
+        "name": "מכינת מיצר",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/meitzar",
+        "image": "https://mechinot.org.il/images/new-site-logos/meitzar.jpg"
+    },
+    {
+        "name": "מכינת העמ\"ק",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/emek",
+        "image": "https://mechinot.org.il/images/new-site-logos/haemek.jpg"
+    },
+    {
+        "name": "מכינת מעלה אפרים",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/2025-11-11-21-15-00",
+        "image": "https://mechinot.org.il/images/logos/1234.png"
+    },
+    {
+        "name": "מכינת גבריאל - מבואות יריחו",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/2025-11-16-14-32-39",
+        "image": "https://mechinot.org.il/images/logos/2026-01-19_-110650.png"
+    },
+    {
+        "name": "מכינת ערבה",
+        "region": "ערבה",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/arava-hatzeva",
+        "image": "https://mechinot.org.il/images/new-site-logos/arava-new.jpg"
+    },
+    {
+        "name": "מכינת חברותא",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/chevruta",
+        "image": "https://mechinot.org.il/images/new-site-logos/chevruta.jpg"
+    },
+    {
+        "name": "מכינת עצם",
+        "region": "דרום",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/otzem",
+        "image": "https://mechinot.org.il/images/new-site-logos/otzem.jpg"
+    },
+    {
+        "name": "המכינה החדשה בלוד",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/maoz",
+        "image": "https://mechinot.org.il/images/new-site-logos/lod.png"
+    },
+    {
+        "name": "מכינת דרך ארץ",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/derach-aretz",
+        "image": "https://mechinot.org.il/images/new-site-logos/dererch-aretz.jpg"
+    },
+    {
+        "name": "מכינת תבור",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/tavor",
+        "image": "https://mechinot.org.il/images/new-site-logos/tavor.jpg"
+    },
+    {
+        "name": "מכינת חוסן",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/hosen-peduel",
+        "image": "https://mechinot.org.il/images/new-site-logos/chosen.jpg"
+    },
+    {
+        "name": "מכינת משכיות",
+        "region": "צפון, עמקים",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/mashahiyot",
+        "image": "https://mechinot.org.il/images/new-site-logos/mishkiot.jpg"
+    },
+    {
+        "name": "מכינת רבין",
+        "region": "צפון, עמקים",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/rabin",
+        "image": "https://mechinot.org.il/images/new-site-logos/rabin-new.jpg"
+    },
+    {
+        "name": "מכינת נחשון",
+        "region": "מרכז/שפלה, דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/nachshon",
+        "image": "https://mechinot.org.il/images/new-site-logos/nachson.jpg"
+    },
+    {
+        "name": "מכינת כאייל",
+        "region": "דרום",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot/kaeayal",
+        "image": "https://mechinot.org.il/images/new-site-logos/keayal.jpg"
+    },
+    {
+        "name": "מכינת ניר עוז",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/nir-oz",
+        "image": "https://mechinot.org.il/images/new-site-logos/4.png"
+    },
+    {
+        "name": "מכינת יסודות",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/yesodot",
+        "image": "https://mechinot.org.il/images/new-site-logos/yesodot.jpeg"
+    },
+    {
+        "name": "מכינת מלח הארץ",
+        "region": "דרום",
+        "gender": "בנים",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/melach-haaretz",
+        "image": "https://mechinot.org.il/images/new-site-logos/melach-haaretz.jpg"
+    },
+    {
+        "name": "מכינת אלישע | נווה צוף",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/elisha",
+        "image": "https://mechinot.org.il/images/new-site-logos/elisha.jpg"
+    },
+    {
+        "name": "מכינת מגדלור",
+        "region": "מרכז/שפלה",
+        "gender": "בנים, בנות",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/lighthouse",
+        "image": "https://mechinot.org.il/images/new-site-logos/WhatsApp_Image_2026-01-18_at_082210.jpeg"
+    },
+    {
+        "name": "מכינת מדרשת השילוב נטור",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/nator",
+        "image": "https://mechinot.org.il/images/new-site-logos/midreshat-hashiluv-natur.jpg"
+    },
+    {
+        "name": "מכינת השומר החדש",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/2023-04-14-15-10-49",
+        "image": "https://mechinot.org.il/images/new-site-logos/hashomer-hachadash.jpg"
+    },
+    {
+        "name": "מכינת חמדת יהודה",
+        "region": "עמקים",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/hemdat-yehuda",
+        "image": "https://mechinot.org.il/images/new-site-logos/chemdad-yehuda.jpg"
+    },
+    {
+        "name": "מכינת גליל עליון",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/galil-elion",
+        "image": "https://mechinot.org.il/images/new-site-logos/galil-elyon-new.jpg"
+    },
+    {
+        "name": "מכינת יפתח",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/2022-10-24-13-13-32",
+        "image": "https://mechinot.org.il/images/new-site-logos/iftach.jpg"
+    },
+    {
+        "name": "מכינת חמש אצבעות",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/five-fongers",
+        "image": "https://mechinot.org.il/images/new-site-logos/chamesh-etzbaot-new.jpg"
+    },
+    {
+        "name": "מכינת עז שלמה",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/oz-shlomo",
+        "image": "https://mechinot.org.il/images/new-site-logos/oz-shlomo.jpg"
+    },
+    {
+        "name": "מכינת הנגב",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/hanegev-sde-boker",
+        "image": "https://mechinot.org.il/images/new-site-logos/hanegev-new-jpg.jpg"
+    },
+    {
+        "name": "מכינת (המכינה) הירושלמית",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/yerushalmit",
+        "image": "https://mechinot.org.il/images/new-site-logos/hayerushalmit.jpg"
+    },
+    {
+        "name": "מכינת בינ\"ה",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/bina",
+        "image": "https://mechinot.org.il/images/new-site-logos/bina.jpg"
+    },
+    {
+        "name": "מכינת עטרת ירושלים",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/ateret",
+        "image": "https://mechinot.org.il/images/new-site-logos/ateret-square.jpg"
+    },
+    {
+        "name": "מכינת אדרת",
+        "region": "מרכז/שפלה, דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/aderet",
+        "image": "https://mechinot.org.il/images/new-site-logos/aderet.jpg"
+    },
+    {
+        "name": "מכינת עמי-חי",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/ami-hai",
+        "image": "https://mechinot.org.il/images/new-site-logos/ami-chai.jpg"
+    },
+    {
+        "name": "מכינת גל",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/gal",
+        "image": "https://mechinot.org.il/images/new-site-logos/gal-new-jpg.jpg"
+    },
+    {
+        "name": "מכינת אורות",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/orot",
+        "image": "https://mechinot.org.il/images/new-site-logos/orot.jpg"
+    },
+    {
+        "name": "מכינת מעמקים",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/2023-08-29-08-47-18",
+        "image": "https://mechinot.org.il/images/new-site-logos/maamakim.jpg"
+    },
+    {
+        "name": "מכינת רקיע",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/rakia",
+        "image": "https://mechinot.org.il/images/new-site-logos/rakia.jpg"
+    },
+    {
+        "name": "מכינת חנתון",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/hanaton",
+        "image": "https://mechinot.org.il/images/new-site-logos/chanaton.jpg"
+    },
+    {
+        "name": "מכינת ארזי הלבנון - חיבת ציון יפו",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/arzey-halevanon",
+        "image": "https://mechinot.org.il/images/new-site-logos/arazei-halevanon-new.png"
+    },
+    {
+        "name": "המכינה המדעית",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/ofakim-1715391022",
+        "image": "https://mechinot.org.il/images/new-site-logos/WhatsApp_Image_2025-09-04_at_113507.jpeg"
+    },
+    {
+        "name": "מכינת באר אורה",
+        "region": "ערבה",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/beer-ora",
+        "image": "https://mechinot.org.il/images/new-site-logos/beer-ora.jpg"
+    },
+    {
+        "name": "מכינת לפידות - אמונה",
+        "region": "מרכז/שפלה",
+        "gender": "בנות",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/list/torani-banot/lapidot-emuna",
+        "image": "https://mechinot.org.il/images/new-site-logos/lapidot-emuna.jpg"
+    },
+    {
+        "name": "מכינת שובו אחים",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/2021-09-29-09-06-04",
+        "image": "https://mechinot.org.il/images/new-site-logos/shuvu-achim-new.jpg"
+    },
+    {
+        "name": "מכינת בארי",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/2016-10-08-18-35-32",
+        "image": "https://mechinot.org.il/images/new-site-logos/beeri.jpg"
+    },
+    {
+        "name": "מכינת בית ישראל",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/beit-israel",
+        "image": "https://mechinot.org.il/images/new-site-logos/WhatsApp_Image_2025-09-08_at_110241.jpeg"
+    },
+    {
+        "name": "מכינת עורי",
+        "region": "מרכז/שפלה",
+        "gender": "בנות",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/list/torani-banot/uri",
+        "image": "https://mechinot.org.il/images/new-site-logos/uri-logo-1000.jpg"
+    },
+    {
+        "name": "מכינת בית יתיר",
+        "region": "דרום",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/beiy-yatir",
+        "image": "https://mechinot.org.il/images/new-site-logos/beit-yatir-new.jpg"
+    },
+    {
+        "name": "מכינת תלם",
+        "region": "מרכז/שפלה",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/telem-yafo-holon",
+        "image": "https://mechinot.org.il/images/new-site-logos/1.png"
+    },
+    {
+        "name": "מכינת דרור",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/dror",
+        "image": "https://mechinot.org.il/images/new-site-logos/dror.jpg"
+    },
+    {
+        "name": "מכינת צהלי",
+        "region": "מרכז/שפלה, דרום",
+        "gender": "בנות",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/list/torani-banot/tzahali",
+        "image": "https://mechinot.org.il/images/new-site-logos/tzahali.jpg"
+    },
+    {
+        "name": "מכינת תמיר",
+        "region": "צפון",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/tamir",
+        "image": "https://mechinot.org.il/images/new-site-logos/tamir-new.jpg"
+    },
+    {
+        "name": "מכינת אחד ואחת משלנו",
+        "region": "מרכז/שפלה",
+        "gender": "בנים, בנות",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/echad-mishelanu",
+        "image": "https://mechinot.org.il/images/new-site-logos/echad-mishelanu-new.jpg"
+    },
+    {
+        "name": "מכינת מנשרים קלו",
+        "region": "צפון",
+        "gender": "מעורבת",
+        "type": "חילונית",
+        "link": "https://mechinot.org.il/mechina/list/general/minsharim",
+        "image": "https://mechinot.org.il/images/new-site-logos/minesharim-kalu-new.png"
+    },
+    {
+        "name": "מכינת יונתן - עלומים וסעד",
+        "region": "דרום",
+        "gender": "מעורבת",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/list/torani-banot/yonatan",
+        "image": "https://mechinot.org.il/images/new-site-logos/yonatan_2.jpg"
+    },
+    {
+        "name": "מכינת מגן שאול - נוקדים",
+        "region": "מרכז/שפלה",
+        "gender": "בנים",
+        "type": "תורנית",
+        "link": "https://mechinot.org.il/mechina/toraniyot-joint/magen-shaul",
+        "image": "https://mechinot.org.il/images/new-site-logos/magen-shaul-1000.jpg"
+    },
+    {
+        "name": "מכינת בנות המדבר",
+        "region": "דרום",
+        "gender": "בנות",
+        "type": "כללית/מעורבת",
+        "link": "https://mechinot.org.il/mechina/list/general/girls",
+        "image": "https://mechinot.org.il/images/new-site-logos/bnot-hamidbar.jpg"
+    }
+]

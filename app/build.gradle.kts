@@ -44,6 +44,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.hbb20:ccp:2.7.0")
+    implementation("com.google.code.gson:gson:2.14.0")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
