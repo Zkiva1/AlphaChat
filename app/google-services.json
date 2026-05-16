@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "780872621874",
+    "project_id": "alphachat-backend",
+    "storage_bucket": "alphachat-backend.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780872621874:android:d412915a309e44751bc12b",
+        "android_client_info": {
+          "package_name": "com.example.alphachat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZU-VgVRtdg_hFYoEhs0KVSiCtnEShSFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
