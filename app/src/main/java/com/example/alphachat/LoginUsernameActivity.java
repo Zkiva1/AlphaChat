@@ -64,7 +64,7 @@ public class LoginUsernameActivity extends AppCompatActivity {
             registerUsername.setError("Username should be at least 3 characters long");
             return;
         } else {
-            userModel = new UserModel(email, username, Timestamp.now());
+            userModel = new UserModel(email, username, Timestamp.now(), FirebaseUtil.currentUserId(), null);
         }
 
         FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {

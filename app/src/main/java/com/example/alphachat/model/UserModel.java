@@ -7,14 +7,18 @@ public class UserModel {
     private String email;
     private String username;
     private Timestamp createdTimestamp;
+    private String userId;
+    private String profilePicUrl;
 
     public UserModel() {
     }
 
-    public UserModel(String email, String username, Timestamp createdTimestamp) {
+    public UserModel(String email, String username, Timestamp createdTimestamp, String userId, String profilePicUrl) {
         this.email = email;
         this.username = username;
         this.createdTimestamp = createdTimestamp;
+        this.userId = userId;
+        this.profilePicUrl = profilePicUrl;
     }
 
     public String getEmail() {
@@ -39,5 +43,21 @@ public class UserModel {
 
     public void setCreatedTimestamp(Timestamp createdTimestamp) {
         this.createdTimestamp = createdTimestamp;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getProfilePicUrl() {
+        return profilePicUrl;
+    }
+
+    public void setProfilePicUrl(String profilePicUrl) {
+        this.profilePicUrl = profilePicUrl;
     }
 }

@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.alphachat" />
-                  <option name="mobileSdkAppId" value="1:780872621874:android:d412915a309e44751bc12b" />
-                  <option name="projectId" value="alphachat-backend" />
-                  <option name="projectNumber" value="780872621874" />
+                  <option name="mobileSdkAppId" value="1:511557750662:android:63c5ffff2f40b5990ea607" />
+                  <option name="projectId" value="alphachat-e889a" />
+                  <option name="projectNumber" value="511557750662" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
