@@ -2,7 +2,12 @@ package com.example.alphachat.model;
 
 public class Mechina {
 
-    String name, region, gender, type, link, image;
+    public String name;
+    public String region;
+    public String gender;
+    public String type;
+    public String link;
+    public String image;
 
     public Mechina() {
     }

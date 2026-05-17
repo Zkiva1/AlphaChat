@@ -45,6 +45,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.hbb20:ccp:2.7.0")
     implementation("com.google.code.gson:gson:2.14.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
