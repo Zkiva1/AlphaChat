@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.alphachat.adapter.MechinaAdapter;
 import com.example.alphachat.model.Mechina;
 import java.util.ArrayList;
 import java.util.List;

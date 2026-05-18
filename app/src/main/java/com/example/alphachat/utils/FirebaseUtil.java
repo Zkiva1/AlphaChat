@@ -1,6 +1,7 @@
 package com.example.alphachat.utils;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -30,6 +31,10 @@ public class FirebaseUtil {
     public static StorageReference getCurrentProfilePicRef() {
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
                 .child(FirebaseUtil.currentUserId());
+    }
+
+    public static CollectionReference allUserCollectionReference() {
+        return FirebaseFirestore.getInstance().collection("users");
     }
 
 }

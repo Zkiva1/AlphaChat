@@ -44,6 +44,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-storage:22.0.1")
+    implementation("com.firebaseui:firebase-ui-firestore:10.0.0-beta02")
     implementation("com.hbb20:ccp:2.7.0")
     implementation("com.google.code.gson:gson:2.14.0")
     implementation("com.github.bumptech.glide:glide:5.0.7")

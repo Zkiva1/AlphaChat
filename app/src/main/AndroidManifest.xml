@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlphaChat">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchUserActivity"
             android:exported="false" />
         <activity
