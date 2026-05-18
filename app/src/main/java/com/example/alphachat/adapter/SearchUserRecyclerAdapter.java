@@ -1,6 +1,7 @@
 package com.example.alphachat.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.alphachat.ChatActivity;
 import com.example.alphachat.R;
 import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.AndroidUtil;
@@ -39,7 +41,10 @@ public class SearchUserRecyclerAdapter extends FirestoreRecyclerAdapter<UserMode
         }
 
         holder.itemView.setOnClickListener(view -> {
-            
+            Intent intent = new Intent(context, ChatActivity.class);
+            AndroidUtil.passUserModelAsIntent(intent, model);
+            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         });
     }
 

@@ -8,7 +8,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.alphachat.model.UserModel;
+import com.example.alphachat.utils.AndroidUtil;
+
 public class ChatActivity extends AppCompatActivity {
+
+    UserModel otherUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +25,8 @@ public class ChatActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        otherUser = AndroidUtil.getUserModelFromIntent(getIntent());
+
     }
 }
