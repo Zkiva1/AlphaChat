@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search Mechinot"
+            android:text="Search Users"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -51,60 +51,18 @@
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="4dp"
             app:iconifiedByDefault="false"
-            app:queryHint="Type Mechina name..."
+            app:queryHint="Type Username..."
             app:queryBackground="@android:color/transparent" />
 
 
     </RelativeLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/filter_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_layout"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:scrollbars="none">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/spinner_region"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/edit_text_rounded_corner"
-                android:elevation="2dp"
-                android:padding="5dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/edit_text_rounded_corner"
-                android:elevation="2dp"
-                android:padding="5dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_type"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@drawable/edit_text_rounded_corner"
-                android:elevation="2dp"
-                android:padding="5dp"/>
-
-        </LinearLayout>
-    </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/filter_scroll_view"
+        android:layout_below="@+id/search_layout"
         android:layout_marginTop="5dp"
         android:id="@+id/search_recycler_view"/>
 

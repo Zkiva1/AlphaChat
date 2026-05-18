@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageButton searchButton;
     ChatFragment chatFragment;
-    MapFragment mapFragment;
+    MechinotFragment mapFragment;
     ProfileFragment profileFragment;
 
     @Override
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         chatFragment = new ChatFragment();
         profileFragment = new ProfileFragment();
-        mapFragment = new MapFragment();
+        mapFragment = new MechinotFragment();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         searchButton = findViewById(R.id.main_search_btn);

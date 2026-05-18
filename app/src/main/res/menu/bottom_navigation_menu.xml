@@ -5,8 +5,8 @@
         android:icon="@drawable/chat_icon"
         android:id="@+id/menu_chat"/>
 
-    <item android:title="Map"
-        android:icon="@drawable/map_icon"
+    <item android:title="Mechinot"
+        android:icon="@drawable/school_icon"
         android:id="@+id/menu_map"/>
 
     <item android:title="Profile"
