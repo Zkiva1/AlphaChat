@@ -43,28 +43,16 @@
         android:layout_margin="10dp"
         android:id="@+id/search_layout">
 
-        <EditText
+
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_username_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="4dp"
-            android:padding="10dp"
-            android:hint="Type Username..."
-            android:layout_toLeftOf="@+id/search_user_btn"/>
-        
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/icon_search"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/my_primary"
-            android:padding="4dp"
-            android:layout_margin="10dp"
-            android:id="@+id/search_user_btn"/>
+            app:queryHint="Type Username..."
+            app:iconifiedByDefault="false"/>
 
 
     </RelativeLayout>

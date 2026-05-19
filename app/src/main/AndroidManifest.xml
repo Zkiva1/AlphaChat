@@ -20,6 +20,7 @@
         android:theme="@style/Theme.AlphaChat">
         <activity
             android:name=".ChatActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".SearchUserActivity"
@@ -45,6 +46,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".FCMNotificationService" android:exported="false">
+            <intent-filter >
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <activity
             android:name=".MainActivity"
             android:exported="false" />

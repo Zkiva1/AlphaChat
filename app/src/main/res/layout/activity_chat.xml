@@ -5,14 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatActivity">
+    tools:context=".ChatActivity"
+    android:background="@color/chat_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/my_primary"
         android:padding="10dp"
-        android:id="@+id/chat_toolbar">
+        android:id="@+id/chat_toolbar"
+        android:background="@color/off_white">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,7 +21,7 @@
             android:text="Username"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/profile_pic_layout"
@@ -38,7 +39,7 @@
             android:layout_height="32dp"
             android:src="@drawable/icon_back"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/white"
+            app:tint="@color/black"
             android:layout_centerVertical="true"
             android:id="@+id/back_btn"/>
 
@@ -48,8 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/chat_toolbar"
-        android:layout_above="@+id/bottom_layout"/>
-    
+        android:layout_above="@+id/bottom_layout"
+        android:id="@+id/chat_recycler_view" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -61,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Message"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="4dp"

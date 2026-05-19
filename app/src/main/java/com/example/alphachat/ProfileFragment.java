@@ -26,6 +26,7 @@ import com.canhub.cropper.CropImageView;
 import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.AndroidUtil;
 import com.example.alphachat.utils.FirebaseUtil;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.StorageReference;
 
 public class ProfileFragment extends Fragment {
@@ -139,13 +140,19 @@ public class ProfileFragment extends Fragment {
         });
 
         logoutBtn.setOnClickListener(view1 -> {
-            FirebaseUtil.logout();
-            Intent intent = new Intent(getContext(), SplashActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            if (getActivity() != null) {
-                getActivity().overridePendingTransition(0, 0);
-            }
+            FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(task -> {
+               if(task.isSuccessful()) {
+                   FirebaseUtil.logout();
+
+                   Intent intent = new Intent(getContext(), SplashActivity.class);
+                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                   startActivity(intent);
+
+                   if (getActivity() != null) {
+                       getActivity().overridePendingTransition(0, 0);
+                   }
+               }
+            });
         });
 
         return view;

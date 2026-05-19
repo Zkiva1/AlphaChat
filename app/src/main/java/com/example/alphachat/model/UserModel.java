@@ -9,6 +9,7 @@ public class UserModel {
     private Timestamp createdTimestamp;
     private String userId;
     private String profilePicUrl;
+    private String fcmToken;
 
     public UserModel() {
     }
@@ -59,5 +60,13 @@ public class UserModel {
 
     public void setProfilePicUrl(String profilePicUrl) {
         this.profilePicUrl = profilePicUrl;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 }
