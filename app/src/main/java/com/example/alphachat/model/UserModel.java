@@ -10,16 +10,20 @@ public class UserModel {
     private String userId;
     private String profilePicUrl;
     private String fcmToken;
+    private String occupation;
+    private String mechina;
 
     public UserModel() {
     }
 
-    public UserModel(String email, String username, Timestamp createdTimestamp, String userId, String profilePicUrl) {
+    public UserModel(String email, String username, Timestamp createdTimestamp, String userId, String profilePicUrl, String occupation, String mechina) {
         this.email = email;
         this.username = username;
         this.createdTimestamp = createdTimestamp;
         this.userId = userId;
         this.profilePicUrl = profilePicUrl;
+        this.occupation = occupation;
+        this.mechina = mechina;
     }
 
     public String getEmail() {
@@ -68,5 +72,21 @@ public class UserModel {
 
     public void setFcmToken(String fcmToken) {
         this.fcmToken = fcmToken;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getMechina() {
+        return mechina;
+    }
+
+    public void setMechina(String mechina) {
+        this.mechina = mechina;
     }
 }

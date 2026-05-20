@@ -1,13 +1,9 @@
 package com.example.alphachat;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -16,20 +12,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphachat.adapter.SearchUserRecyclerAdapter;
-import com.example.alphachat.model.Mechina;
 import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.AndroidUtil;
 import com.example.alphachat.utils.FirebaseUtil;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchUserActivity extends AppCompatActivity {
 
@@ -77,9 +67,6 @@ public class SearchUserActivity extends AppCompatActivity {
                     if (adapter != null) {
                         adapter.stopListening();
                     }
-                    // FIX: Hide the RecyclerView instead of setting the adapter to null.
-                    // Setting it to null causes layout inconsistencies.
-                    recyclerView.setVisibility(View.GONE);
                 } else {
                     setupSearchRecyclerView(newText);
                 }
@@ -101,7 +88,7 @@ public class SearchUserActivity extends AppCompatActivity {
             adapter = new SearchUserRecyclerAdapter(options, SearchUserActivity.this);
             adapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
 
-            recyclerView.setLayoutManager(new SafeLinearLayoutManager(this));
+            recyclerView.setLayoutManager(new AndroidUtil.SafeLinearLayoutManager(this));
 
             recyclerView.setAdapter(adapter);
             adapter.startListening();
@@ -109,8 +96,6 @@ public class SearchUserActivity extends AppCompatActivity {
             adapter.updateOptions(options);
             adapter.startListening();
         }
-
-        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -130,21 +115,6 @@ public class SearchUserActivity extends AppCompatActivity {
     }
 
 
-    public class SafeLinearLayoutManager extends LinearLayoutManager {
-        public SafeLinearLayoutManager(Context context) {
-            super(context);
-        }
-
-        @Override
-        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-            try {
-                super.onLayoutChildren(recycler, state);
-            } catch (IndexOutOfBoundsException e) {
-                // Catch the crash and ignore it.
-                // The RecyclerView will automatically redraw once Firebase data arrives a millisecond later.
-            }
-        }
-    }
 }
 
 

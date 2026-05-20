@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="occupation_array">
+        <item>תלמיד תיכון</item>
+        <item>מכיניסת</item>
+        <item>ר"מ או מדריך</item>
+    </string-array>
+
+</resources>

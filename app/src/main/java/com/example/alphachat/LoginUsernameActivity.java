@@ -13,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.FirebaseUtil;
@@ -25,16 +27,17 @@ import com.google.firebase.firestore.DocumentSnapshot;
 public class LoginUsernameActivity extends AppCompatActivity {
 
     EditText registerUsername;
-    Button registerFinishBtn;
+    Button registerUsernameBtn;
     ProgressBar progressBar;
     String email;
-    UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login_username);
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        controller.setAppearanceLightStatusBars(true);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -42,60 +45,25 @@ public class LoginUsernameActivity extends AppCompatActivity {
         });
 
         registerUsername = findViewById(R.id.register_username);
-        registerFinishBtn = findViewById(R.id.register_finish_btn);
+        registerUsernameBtn = findViewById(R.id.register_username_btn);
         progressBar = findViewById(R.id.register_username_progress_bar);
         progressBar.setVisibility(View.GONE);
         email = getIntent().getStringExtra("email");
-        getUsername();
 
-        registerFinishBtn.setOnClickListener((view -> { setUsername(); }));
-
-    }
-
-    void setUsername() {
-
-        progressBar.setVisibility(View.VISIBLE);
-        registerFinishBtn.setVisibility(View.GONE);
-
-        String username = registerUsername.getText().toString();
-        if (username.isEmpty() || username.length() < 3) {
-            registerFinishBtn.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.GONE);
-            registerUsername.setError("Username should be at least 3 characters long");
-            return;
-        } else {
-            userModel = new UserModel(email, username, Timestamp.now(), FirebaseUtil.currentUserId(), null);
-        }
-
-        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Intent intent = new Intent(LoginUsernameActivity.this, MainActivity.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(LoginUsernameActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    registerFinishBtn.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                }
+        registerUsernameBtn.setOnClickListener((view -> {
+            String username = registerUsername.getText().toString().trim();
+            if (username.isEmpty() || username.length() < 3) {
+                registerUsernameBtn.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+                registerUsername.setError("Username should be at least 3 characters long");
+            } else {
+                Intent intent = new Intent(LoginUsernameActivity.this, OccupationRegisterActivity.class);
+                intent.putExtra("email", email);
+                intent.putExtra("username", registerUsername.getText().toString().trim());
+                overridePendingTransition(0, 0);
+                startActivity(intent);
             }
-        });
-
-    }
-
-    void getUsername() {
-        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    userModel = task.getResult().toObject(UserModel.class);
-                    if (userModel!=null) {
-                        registerUsername.setText(userModel.getUsername());
-                    }
-                }
-            }
-        });
+        }));
 
     }
 

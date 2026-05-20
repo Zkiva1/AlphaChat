@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.FirebaseUtil;
@@ -40,6 +42,8 @@ public class register_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_login);
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        controller.setAppearanceLightStatusBars(true);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -71,47 +75,51 @@ public class register_login extends AppCompatActivity {
                     register_btn.setVisibility(View.VISIBLE);
                     Toast.makeText(register_login.this, "Email or Password empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUtil.currentUserDetails().get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task2) {
-                                        if (task2.isSuccessful()) {
-                                            UserModel userModel = task2.getResult().toObject(UserModel.class);
-                                            Intent intent;
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task2 -> {
+                                if (task2.isSuccessful()) {
+                                    UserModel userModel = task2.getResult().toObject(UserModel.class);
+                                    Intent intent;
 
-                                            if (userModel == null || userModel.getUsername() == null || userModel.getUsername().isEmpty()) {
-                                                // No username yet
-                                                intent = new Intent(register_login.this, LoginUsernameActivity.class);
-                                                intent.putExtra("email", login_email.getText().toString());
-                                            } else {
-                                                //username exists
-                                                intent = new Intent(register_login.this, MainActivity.class);
-                                            }
-                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(intent);
-                                        } else {
-                                            progressBar.setVisibility(View.GONE);
-                                            login_btn.setVisibility(View.VISIBLE);
-                                            register_btn.setVisibility(View.VISIBLE);
-                                            Toast.makeText(register_login.this, task2.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
+                                    if (userModel == null || userModel.getUsername() == null || userModel.getUsername().isEmpty()) {
+                                        // No username yet
+                                        intent = new Intent(register_login.this, LoginUsernameActivity.class);
+                                        intent.putExtra("email", login_email.getText().toString().trim());
+
+                                    } else if (userModel.getOccupation() == null || userModel.getOccupation().isEmpty()) {
+                                        // Username exists, but no occupation yet
+                                        intent = new Intent(register_login.this, OccupationRegisterActivity.class);
+
+                                        intent.putExtra("username", userModel.getUsername());
+                                        intent.putExtra("email", login_email.getText().toString().trim());
+
+                                    } else {
+                                        // Both username and occupation exist
+                                        intent = new Intent(register_login.this, MainActivity.class);
                                     }
-                                });
-                            } else {
-                                progressBar.setVisibility(View.GONE);
-                                login_btn.setVisibility(View.VISIBLE);
-                                register_btn.setVisibility(View.VISIBLE);
-                                Toast.makeText(register_login.this, "Email or password incorrect", Toast.LENGTH_SHORT).show();
-                            }
+
+                                    // Start the activity
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+
+                                } else {
+                                    progressBar.setVisibility(View.GONE);
+                                    login_btn.setVisibility(View.VISIBLE);
+                                    register_btn.setVisibility(View.VISIBLE);
+                                    Toast.makeText(register_login.this, task2.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            progressBar.setVisibility(View.GONE);
+                            login_btn.setVisibility(View.VISIBLE);
+                            register_btn.setVisibility(View.VISIBLE);
+                            Toast.makeText(register_login.this, "Email or password incorrect", Toast.LENGTH_SHORT).show();
                         }
                     });
-
                 }
             }
-        });
+        });;
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override

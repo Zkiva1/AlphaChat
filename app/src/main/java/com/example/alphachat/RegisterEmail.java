@@ -11,7 +11,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,6 +31,8 @@ public class RegisterEmail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_email);
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        controller.setAppearanceLightStatusBars(true);
         mAuth = FirebaseAuth.getInstance();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -49,7 +53,7 @@ public class RegisterEmail extends AppCompatActivity {
             if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             // Valid email
                 Intent intent = new Intent(RegisterEmail.this, RegisterPassword.class);
-                intent.putExtra("email", emailInput.getText().toString());
+                intent.putExtra("email", emailInput.getText().toString().trim());
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             } else {

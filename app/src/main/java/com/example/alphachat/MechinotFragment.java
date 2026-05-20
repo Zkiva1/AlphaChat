@@ -120,12 +120,12 @@ public class MechinotFragment extends Fragment {
         filteredList.clear();
 
         for (Mechina item : allMechinot) {
-            boolean matchesSearch = query.isEmpty() || item.name.toLowerCase().contains(query);
-            boolean matchesRegion = selectedRegion.equals("כל האזורים") || item.region.contains(selectedRegion);
+            boolean matchesSearch = query.isEmpty() || item.getName().toLowerCase().contains(query);
+            boolean matchesRegion = selectedRegion.equals("כל האזורים") || item.getRegion().contains(selectedRegion);
 
             // Contains handles multi-value string subsets within the text attributes safely
-            boolean matchesGender = selectedGender.equals("כל המגדרים") || item.gender.contains(selectedGender);
-            boolean matchesType = selectedType.equals("כל הסוגים") || item.type.contains(selectedType);
+            boolean matchesGender = selectedGender.equals("כל המגדרים") || item.getGender().contains(selectedGender);
+            boolean matchesType = selectedType.equals("כל הסוגים") || item.getType().contains(selectedType);
 
             if (matchesSearch && matchesRegion && matchesGender && matchesType) {
                 filteredList.add(item);

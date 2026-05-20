@@ -1,13 +1,15 @@
 package com.example.alphachat.model;
 
-public class Mechina {
+import java.io.Serializable;
 
-    public String name;
-    public String region;
-    public String gender;
-    public String type;
-    public String link;
-    public String image;
+public class Mechina implements Serializable {
+
+    private String name;
+    private String region;
+    private String gender;
+    private String type;
+    private String link;
+    private String image;
 
     public Mechina() {
     }
@@ -20,6 +22,8 @@ public class Mechina {
         this.link = link;
         this.image = image;
     }
+
+
 
     public String getName() {
         return name;

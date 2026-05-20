@@ -14,7 +14,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,6 +34,8 @@ public class RegisterPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_password);
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        controller.setAppearanceLightStatusBars(true);
         mAuth = FirebaseAuth.getInstance();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -133,6 +137,10 @@ public class RegisterPassword extends AppCompatActivity {
                                     task.getException().getMessage(),
                                     Toast.LENGTH_SHORT
                             ).show();
+
+                            Intent mainIntent = new Intent(this, register_login.class);
+                            mainIntent.setFlags(mainIntent.FLAG_ACTIVITY_NO_ANIMATION | mainIntent.FLAG_ACTIVITY_NEW_TASK | mainIntent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(mainIntent);
 
                             Intent intent = new Intent(
                                     RegisterPassword.this,

@@ -19,9 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlphaChat">
         <activity
-            android:name=".ChatActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:name=".MechinaActivity"
             android:exported="false" />
+        <activity
+            android:name=".OccupationRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SearchUserActivity"
             android:exported="false" />
@@ -46,11 +52,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".FCMNotificationService" android:exported="false">
-            <intent-filter >
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+
+        <service
+            android:name=".FCMNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />

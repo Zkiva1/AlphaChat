@@ -1,5 +1,7 @@
 package com.example.alphachat.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.alphachat.ChatActivity;
+import com.example.alphachat.MechinaActivity;
 import com.example.alphachat.R;
 import com.example.alphachat.model.Mechina;
+import com.example.alphachat.utils.AndroidUtil;
+
 import java.util.List;
 
 public class MechinaAdapter extends RecyclerView.Adapter<MechinaAdapter.MechinaViewHolder> {
@@ -31,15 +37,23 @@ public class MechinaAdapter extends RecyclerView.Adapter<MechinaAdapter.MechinaV
     public void onBindViewHolder(@NonNull MechinaViewHolder holder, int position) {
         Mechina item = displayList.get(position);
 
-        holder.nameText.setText(item.name);
-        holder.detailsText.setText(item.region + " | " + item.gender + " | " + item.type);
+        holder.nameText.setText(item.getName());
+        holder.detailsText.setText(item.getRegion() + " | " + item.getGender() + " | " + item.getType());
 
         // Glide intercepts the URL thread, checks local memory cache, or downloads asynchronously
         Glide.with(holder.itemView.getContext())
-                .load(item.image)
+                .load(item.getImage())
                 .placeholder(R.drawable.icon_search)
                 .error(R.drawable.icon_search)
                 .into(holder.mechinaImage);
+
+        holder.itemView.setOnClickListener(view -> {
+            Context context = view.getContext();
+            Intent intent = new Intent(context, MechinaActivity.class);
+            AndroidUtil.passMechinaModelAsIntent(intent, item);
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
