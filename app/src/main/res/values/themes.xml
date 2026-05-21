@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Base.Theme.AlphaChat" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:statusBarColor">@color/my_primary</item>
         <item name="android:navigationBarColor">@color/my_primary</item>

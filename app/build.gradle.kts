@@ -49,6 +49,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.14.0")
     implementation("com.github.bumptech.glide:glide:5.0.7")
     implementation("com.vanniktech:android-image-cropper:4.7.0")
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     val work_version = "2.11.2"
     implementation("androidx.work:work-runtime:${work_version}")
     implementation(libs.activity.ktx)

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,13 +30,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 public class register_login extends AppCompatActivity {
 
     Button login_btn, register_btn;
-
+    TextView forgotPasswordTv;
     EditText login_email, login_password;
-
     FirebaseAuth mAuth;
-
     ProgressBar progressBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +50,17 @@ public class register_login extends AppCompatActivity {
 
         login_btn = findViewById(R.id.login_btn);
         register_btn = findViewById(R.id.register_btn);
+        forgotPasswordTv = findViewById(R.id.forgot_password_tv);
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.login_progress_bar);
         progressBar.setVisibility(View.GONE);
+
+        forgotPasswordTv.setOnClickListener(v -> {
+            Intent intent = new Intent(register_login.this, ForgotPasswordActivity.class);
+            startActivity(intent);
+        });
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
