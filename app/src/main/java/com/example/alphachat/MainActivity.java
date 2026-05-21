@@ -1,16 +1,16 @@
 package com.example.alphachat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     ChatFragment chatFragment;
     MechinotFragment mapFragment;
     ProfileFragment profileFragment;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +76,25 @@ public class MainActivity extends AppCompatActivity {
         });
         bottomNavigationView.setSelectedItemId(R.id.menu_chat);
 
-        getFCMToken();
+        checkNotificationPermissionAndGetToken();
 
+    }
+
+    void checkNotificationPermissionAndGetToken() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                // Permission already granted, safe to get token
+                getFCMToken();
+            } else {
+                // Ask the user for permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        } else {
+            // Android 12 or lower gets permission automatically at install
+            getFCMToken();
+        }
     }
 
     void getFCMToken() {

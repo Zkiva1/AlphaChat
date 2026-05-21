@@ -140,22 +140,44 @@ public class ProfileFragment extends Fragment {
         });
 
         logoutBtn.setOnClickListener(view1 -> {
-            FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(task -> {
-               if(task.isSuccessful()) {
-                   FirebaseUtil.logout();
+            // 1. Get the current token first so we know what to remove from Firestore
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(tokenTask -> {
 
-                   Intent intent = new Intent(getContext(), SplashActivity.class);
-                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                   startActivity(intent);
+                if (tokenTask.isSuccessful() && tokenTask.getResult() != null) {
+                    String currentToken = tokenTask.getResult();
 
-                   if (getActivity() != null) {
-                       getActivity().overridePendingTransition(0, 0);
-                   }
-               }
+                    // 2. Remove the token from your Firestore array before signing out
+                    // (If you used a single String field instead of an array, use: .update("fcmToken", null))
+                    FirebaseUtil.currentUserDetails()
+                            .update("fcmToken", null);
+                }
+
+                // 3. Now trigger the token deletion from the device
+                FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(fcmTask -> {
+                    // Even if the network call fails, we MUST let the user log out locally.
+                    executeLocalLogout();
+                });
             });
         });
 
         return view;
+    }
+
+    private void executeLocalLogout() {
+        FirebaseUtil.logout();
+
+        Intent intent = new Intent(getContext(), SplashActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        if (getActivity() != null) {
+            // Safe transition handling for both older and newer Android APIs
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                getActivity().overrideActivityTransition(android.app.Activity.OVERRIDE_TRANSITION_CLOSE, 0, 0);
+            } else {
+                getActivity().overridePendingTransition(0, 0);
+            }
+        }
     }
 
     private void toggleMainActivityUi(int visibility) {
