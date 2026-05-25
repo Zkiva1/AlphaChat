@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_primary"
+    android:background="@drawable/gradient"
     tools:context=".SplashActivity">
 
     <LinearLayout
@@ -17,8 +17,8 @@
         <ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:src="@drawable/chat_icon"
-            app:tint="@color/my_secondary" />
+            android:src="@mipmap/ic_launcher"
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="Developed by Akiva"
-        android:textColor="@color/backround_light"/>
+        android:textColor="@color/background_light"/>
 
 
 </RelativeLayout>

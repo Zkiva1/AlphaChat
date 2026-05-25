@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="my_primary">#075E54</color>
-    <color name="my_secondary">#25D366</color>
-    <color name="backround_light">#ECE5DD</color>
-    <color name="backround_dark">#0B141A</color>
-    <color name="outgoing">#DCF8C6</color>
-    <color name="light_gray">#C3C3C3</color>
+
+    <!-- Main Branding -->
+    <color name="my_primary">#1677FF</color>
+    <color name="my_secondary">#66D17A</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_top">#0A84FF</color>
+    <color name="gradient_middle">#2BB3D6</color>
+    <color name="gradient_bottom">#A8D934</color>
+
+    <!-- Backgrounds -->
+    <color name="background_light">#F5F9FF</color>
+    <color name="background_dark">#08111F</color>
+
+    <!-- Chat -->
+    <color name="chat_background">#EAF5FF</color>
+    <color name="chat_color_sender">#D4D0F7FF</color>
+    <color name="chat_color_receiver">#FFFFFF</color>
+
+    <!-- Message Bubble -->
+    <color name="outgoing">#D4F7D0</color>
+    <color name="incoming">#FFFFFF</color>
+
+    <!-- UI -->
+    <color name="off_white">#FAFAFA</color>
+    <color name="light_gray">#B8C2CC</color>
+    <color name="divider">#DCE6F2</color>
+
+    <!-- Text -->
+    <color name="text_primary">#0D1B2A</color>
+    <color name="text_secondary">#5B6B7A</color>
+
+    <!-- Default -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="off_white">#FAFAFA</color>
-    <color name="chat_background">#EFEAE2</color>
-    <color name="chat_color_sender">#dcf8c6</color>
+
+
 </resources>

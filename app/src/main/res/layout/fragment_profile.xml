@@ -107,7 +107,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/my_secondary"
+                    android:backgroundTint="@color/my_primary"
                     android:text="Update profile"
                     android:id="@+id/profile_update_btn"/>
 
