@@ -1,4 +1,4 @@
-# TITLE_WIP
+# Mechinet
 
 A modern Android chat application built for Israeli 12th-grade students looking for **מכינות** before military service.
 AlphaChat helps users discover mechinot, chat with others, and explore programs in a clean, fast, and modern interface.
