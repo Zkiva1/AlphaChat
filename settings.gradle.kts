@@ -25,5 +25,5 @@ dependencyResolutionManagement {
 
 
 
-rootProject.name = "AlphaChat"
+rootProject.name = "Mechinet"
 include(":app")
