@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Students"
-        android:icon="@drawable/group_icon"
+        android:icon="@drawable/students_icon"
         android:id="@+id/menu_students"/>
 
     <item android:title="Teachers"
-        android:icon="@drawable/person_icon"
+        android:icon="@drawable/teacher_icon"
         android:id="@+id/menu_teachers"/>
 
 </menu>

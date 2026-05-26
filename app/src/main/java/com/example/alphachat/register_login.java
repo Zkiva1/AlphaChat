@@ -70,11 +70,13 @@ public class register_login extends AppCompatActivity {
                 email = login_email.getText().toString();
                 password = login_password.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
+                forgotPasswordTv.setVisibility(View.GONE);
                 login_btn.setVisibility(View.GONE);
                 register_btn.setVisibility(View.GONE);
 
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     progressBar.setVisibility(View.GONE);
+                    forgotPasswordTv.setVisibility(View.VISIBLE);
                     login_btn.setVisibility(View.VISIBLE);
                     register_btn.setVisibility(View.VISIBLE);
                     Toast.makeText(register_login.this, "Email or Password empty", Toast.LENGTH_SHORT).show();
@@ -109,6 +111,7 @@ public class register_login extends AppCompatActivity {
 
                                 } else {
                                     progressBar.setVisibility(View.GONE);
+                                    forgotPasswordTv.setVisibility(View.VISIBLE);
                                     login_btn.setVisibility(View.VISIBLE);
                                     register_btn.setVisibility(View.VISIBLE);
                                     Toast.makeText(register_login.this, task2.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -116,6 +119,7 @@ public class register_login extends AppCompatActivity {
                             });
                         } else {
                             progressBar.setVisibility(View.GONE);
+                            forgotPasswordTv.setVisibility(View.VISIBLE);
                             login_btn.setVisibility(View.VISIBLE);
                             register_btn.setVisibility(View.VISIBLE);
                             Toast.makeText(register_login.this, "Email or password incorrect", Toast.LENGTH_SHORT).show();

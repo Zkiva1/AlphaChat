@@ -8,7 +8,6 @@ exports.sendChatNotification = onDocumentCreated(
     "chatrooms/{chatroomId}/chats/{messageId}",
     async (event) => {
 
-        // In v2, the document data is located inside event.data
         const messageData = event.data.data();
         if (!messageData) {
             console.log("No message data found.");
@@ -17,12 +16,10 @@ exports.sendChatNotification = onDocumentCreated(
 
         const senderId = messageData.senderId;
         const messageText = messageData.message;
-
-        // In v2, document path parameters are found inside event.params
         const chatroomId = event.params.chatroomId;
 
         try {
-            // 1. Fetch the chatroom document to figure out who the OTHER person is
+            // 1. Fetch the chatroom document to find the recipient
             const chatroomDoc = await admin.firestore().collection("chatrooms").doc(chatroomId).get();
             const chatroomData = chatroomDoc.data();
 
@@ -32,8 +29,6 @@ exports.sendChatNotification = onDocumentCreated(
             }
 
             const userIds = chatroomData.userIds;
-
-            // Find the recipient (the ID that is NOT the sender's ID)
             const recipientId = userIds.find(id => id !== senderId);
 
             if (!recipientId) {
@@ -41,7 +36,7 @@ exports.sendChatNotification = onDocumentCreated(
                 return null;
             }
 
-            // 2. Fetch BOTH the sender's profile (for name) and the recipient's profile (for token) simultaneously
+            // 2. Fetch sender profile (for name) and recipient profile (for token) simultaneously
             const [senderDoc, recipientDoc] = await Promise.all([
                 admin.firestore().collection("users").doc(senderId).get(),
                 admin.firestore().collection("users").doc(recipientId).get()
@@ -61,15 +56,20 @@ exports.sendChatNotification = onDocumentCreated(
                 return null;
             }
 
-            // 3. Build and send the notification with embedded custom data
+            // 3. Build and send the notification with High Priority and Custom Data
             const payload = {
                 notification: {
                     title: senderName || "New Message",
                     body: messageText || "",
                 },
-                // Add your custom key-value pairs here
                 data: {
-                    userId: senderId // Key: "userId", Value: the sending user's ID string
+                    userId: senderId // Custom data caught by the Android app
+                },
+                android: {
+                    priority: "high",
+                    notification: {
+                        channelId: "chat_messages_channel" // Triggers the popup channel
+                    }
                 },
                 token: token
             };

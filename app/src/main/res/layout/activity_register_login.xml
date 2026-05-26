@@ -18,7 +18,7 @@
         android:layout_height="150dp"
         android:layout_weight="20"
         android:src="@drawable/chat_icon"
-        android:tint="@color/my_secondary" />
+        app:tint="@color/my_secondary" />
 
     <!-- Title -->
     <TextView

@@ -59,20 +59,17 @@ public class MainActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
         });
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId()==R.id.menu_chat) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, chatFragment).commit();
-                }
-                if (menuItem.getItemId()==R.id.menu_map) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mapFragment).commit();
-                }
-                if (menuItem.getItemId()==R.id.menu_profile) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, profileFragment).commit();
-                }
-                return true;
+        bottomNavigationView.setOnItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId()==R.id.menu_chat) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, chatFragment).commit();
             }
+            if (menuItem.getItemId()==R.id.menu_map) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mapFragment).commit();
+            }
+            if (menuItem.getItemId()==R.id.menu_profile) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, profileFragment).commit();
+            }
+            return true;
         });
         bottomNavigationView.setSelectedItemId(R.id.menu_chat);
 

@@ -30,7 +30,7 @@
         <ImageButton
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/world_icon"
+            android:src="@drawable/internet_icon"
             android:layout_alignParentEnd="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/white"
