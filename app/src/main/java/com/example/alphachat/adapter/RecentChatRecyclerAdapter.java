@@ -49,6 +49,8 @@ public class RecentChatRecyclerAdapter extends FirestoreRecyclerAdapter<Chatroom
                        if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
                            Uri imageUri = Uri.parse(profilePicUrl);
                            AndroidUtil.setProfilePic(context, imageUri, holder.profilePic);
+                       } else {
+                           holder.profilePic.setImageResource(R.drawable.person_icon);
                        }
 
                        if(otherUserModel.getUserId().equals(FirebaseUtil.currentUserId())) {
