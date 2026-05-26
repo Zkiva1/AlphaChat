@@ -43,27 +43,6 @@ git clone https://github.com/Zkiva1/AlphaChat.git
 
 4. Sync Gradle and run the app
 
-## Project Structure
-
-```plaintext
-app/
-├── activities/
-├── adapters/
-├── fragments/
-├── models/
-├── utils/
-└── res/
-```
-
-## Planned Features
-
-* 🧠 AI recommendations for mechinot
-* 📍 Filtering by area, gender, and program type
-* 👥 Group chats
-* ❤️ Favorites system
-* 🔔 Notifications
-* 🖼️ Media sharing
-
 ## Contributing
 
 Pull requests are welcome.
