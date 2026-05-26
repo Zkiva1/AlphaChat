@@ -57,7 +57,7 @@ public class StudantsFragment extends Fragment {
     private void setupSearchRecyclerView() {
         // 3. Use whereEqualTo for exact matches (Firestore rules block multiple range filters)
         Query query = FirebaseUtil.allUserCollectionReference()
-                .whereEqualTo("occupation", "מכיניסת")
+                .whereEqualTo("occupation", "מכיניסט")
                 .whereEqualTo("mechina", mechinaModel.getName());
 
         FirestoreRecyclerOptions<UserModel> options = new FirestoreRecyclerOptions.Builder<UserModel>()

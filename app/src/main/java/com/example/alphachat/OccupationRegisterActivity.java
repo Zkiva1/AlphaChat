@@ -112,7 +112,7 @@ public class OccupationRegisterActivity extends AppCompatActivity {
         occupationPicker.setOnItemClickListener((parent, view, position, id) -> {
             String selectedValue = (String) parent.getItemAtPosition(position);
 
-            if (selectedValue.equals("מכיניסת") || selectedValue.equals("ר\"מ או מדריך")) {
+            if (selectedValue.equals("מכיניסט") || selectedValue.equals("ר\"מ או מדריך")) {
                 mechiaPicker.setText("");
                 mechiaPickerLayout.setVisibility(View.VISIBLE);
             } else {

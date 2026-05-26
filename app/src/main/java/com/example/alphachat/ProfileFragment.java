@@ -195,7 +195,7 @@ public class ProfileFragment extends Fragment {
         occupationSpinner.setOnItemClickListener((parent, v, position, id) -> {
             String selectedValue = (String) parent.getItemAtPosition(position);
 
-            if (selectedValue.equals("מכיניסת") || selectedValue.equals("ר\"מ או מדריך")) {
+            if (selectedValue.equals("מכיניסט") || selectedValue.equals("ר\"מ או מדריך")) {
                 mechinaSpinner.setText("");
                 mechinaLayout.setVisibility(View.VISIBLE);
             } else {
@@ -350,7 +350,7 @@ public class ProfileFragment extends Fragment {
                             ((ArrayAdapter<?>) occupationSpinner.getAdapter()).getFilter().filter(null);
                         }
 
-                        if (occupation.equals("מכיניסת") || occupation.equals("ר\"מ או מדריך")) {
+                        if (occupation.equals("מכיניסט") || occupation.equals("ר\"מ או מדריך")) {
                             mechinaLayout.setVisibility(View.VISIBLE);
                             mechinaSpinner.setText(currentUserModel.getMechina(), false);
                             // FIX: Explicitly clear the mechina adapter filter too
