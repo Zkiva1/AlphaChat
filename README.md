@@ -30,7 +30,7 @@ Mechinet helps users discover mechinot, chat with others, and explore programs i
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Zkiva1/AlphaChat.git
+git clone https://github.com/Zkiva1/Mechinet.git
 ```
 
 2. Open the project in Android Studio
@@ -55,4 +55,4 @@ This project is currently unlicensed.
 ## Developer
 
 Created by Akiva
-GitHub: [Zkiva1/AlphaChat](https://github.com/Zkiva1/AlphaChat?utm_source=chatgpt.com)
+GitHub: [Zkiva1/Mechinet](https://github.com/Zkiva1/Mechinet)
