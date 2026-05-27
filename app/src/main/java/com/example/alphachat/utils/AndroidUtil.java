@@ -76,15 +76,4 @@ public class AndroidUtil {
         Glide.with(context).load(imageUri).circleCrop().into(imageView);
     }
 
-    public static void setErrorOnSearchView(SearchView searchView, String errorMessage) {
-        if (searchView != null) {
-            // Find the view using the exact AndroidX library ID, but reference it as a standard EditText
-            EditText searchTextField = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
-
-            if (searchTextField != null) {
-                searchTextField.setError(errorMessage);
-            }
-        }
-    }
-
 }

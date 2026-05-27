@@ -8,17 +8,12 @@ exports.sendChatNotification = onDocumentCreated(
     "chatrooms/{chatroomId}/chats/{messageId}",
     async (event) => {
 
-        // In v2, the document data is located inside event.data
         const messageData = event.data.data();
-        if (!messageData) {
-            console.log("No message data found.");
-            return null;
-        }
 
         const senderId = messageData.senderId;
         const messageText = messageData.message;
 
-        // In v2, document path parameters are found inside event.params
+        // document path parameters are found inside event.params
         const chatroomId = event.params.chatroomId;
 
         try {
@@ -74,13 +69,11 @@ exports.sendChatNotification = onDocumentCreated(
                 token: token
             };
 
-            const response = await admin.messaging().send(payload);
-            console.log("Successfully sent notification:", response);
-            return null;
+            await admin.messaging().send(payload);
+            console.log("Successfully sent notification.");
 
         } catch (error) {
             console.error("Error sending notification:", error);
-            return null;
         }
     }
 );

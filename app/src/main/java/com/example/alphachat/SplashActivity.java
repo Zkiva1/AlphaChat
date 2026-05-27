@@ -48,52 +48,49 @@ public class SplashActivity extends AppCompatActivity {
 
                     });
         }else {
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-                    if (FirebaseUtil.isLoggedIn()) {
-                        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task2 -> {
-                            if(task2.isSuccessful()) {
-                                Intent intent;
-                                UserModel userModel = task2.getResult().toObject(UserModel.class);
+                if (FirebaseUtil.isLoggedIn()) {
+                    FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task2 -> {
+                        if(task2.isSuccessful()) {
+                            Intent intent;
+                            UserModel userModel = task2.getResult().toObject(UserModel.class);
 
-                                if (userModel == null || userModel.getUsername() == null || userModel.getUsername().isEmpty()) {
-                                    intent = new Intent(SplashActivity.this, LoginUsernameActivity.class);
-                                    String email = (userModel != null) ? userModel.getEmail() : "";
-                                    if (TextUtils.isEmpty(email) && FirebaseAuth.getInstance().getCurrentUser() != null) {
-                                        email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                                    }
-                                    intent.putExtra("email", email);
-
-                                } else if (userModel.getOccupation() == null || userModel.getOccupation().isEmpty()) {
-                                    intent = new Intent(SplashActivity.this, OccupationRegisterActivity.class);
-                                    intent.putExtra("username", userModel.getUsername());
-                                    intent.putExtra("email", userModel.getEmail());
-
-                                } else {
-                                    intent = new Intent(SplashActivity.this, MainActivity.class);
+                            if (userModel == null || userModel.getUsername() == null || userModel.getUsername().isEmpty()) {
+                                intent = new Intent(SplashActivity.this, LoginUsernameActivity.class);
+                                String email = (userModel != null) ? userModel.getEmail() : "";
+                                if (TextUtils.isEmpty(email) && FirebaseAuth.getInstance().getCurrentUser() != null) {
+                                    email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                                 }
+                                intent.putExtra("email", email);
 
-                                startActivity(intent);
-                                overridePendingTransition(0, 0);
-                                finish();
+                            } else if (userModel.getOccupation() == null || userModel.getOccupation().isEmpty()) {
+                                intent = new Intent(SplashActivity.this, OccupationRegisterActivity.class);
+                                intent.putExtra("username", userModel.getUsername());
+                                intent.putExtra("email", userModel.getEmail());
 
                             } else {
-                                String errorMsg = (task2.getException() != null) ? task2.getException().getMessage() : "Error fetching data";
-                                Toast.makeText(SplashActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
-
-                                // Fallback to login screen if the data fetch fails completely
-                                startActivity(new Intent(SplashActivity.this, register_login.class));
-                                finish();
+                                intent = new Intent(SplashActivity.this, MainActivity.class);
                             }
-                        });
 
-                    } else {
-                        startActivity(new Intent(SplashActivity.this, register_login.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-                    }
+                            startActivity(intent);
+                            overridePendingTransition(0, 0);
+                            finish();
+
+                        } else {
+                            String errorMsg = (task2.getException() != null) ? task2.getException().getMessage() : "Error fetching data";
+                            Toast.makeText(SplashActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+
+                            // Fallback to login screen if the data fetch fails completely
+                            startActivity(new Intent(SplashActivity.this, register_login.class));
+                            finish();
+                        }
+                    });
+
+                } else {
+                    startActivity(new Intent(SplashActivity.this, register_login.class));
+                    overridePendingTransition(0, 0);
+                    finish();
                 }
             }, 1000);
         }
