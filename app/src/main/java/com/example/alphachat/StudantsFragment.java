@@ -1,6 +1,5 @@
 package com.example.alphachat;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphachat.adapter.SearchUserRecyclerAdapter;
@@ -55,7 +53,6 @@ public class StudantsFragment extends Fragment {
     }
 
     private void setupSearchRecyclerView() {
-        // 3. Use whereEqualTo for exact matches (Firestore rules block multiple range filters)
         Query query = FirebaseUtil.allUserCollectionReference()
                 .whereEqualTo("occupation", "מכיניסט")
                 .whereEqualTo("mechina", mechinaModel.getName());
@@ -65,11 +62,9 @@ public class StudantsFragment extends Fragment {
                 .build();
 
         if (adapter == null) {
-            // 4. Pass requireContext() to the adapter
             adapter = new SearchUserRecyclerAdapter(options, requireContext());
             adapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
 
-            // 5. Correctly instantiate the LayoutManager
             recyclerView.setLayoutManager(new AndroidUtil.SafeLinearLayoutManager(requireContext()));
 
             recyclerView.setAdapter(adapter);
@@ -78,7 +73,6 @@ public class StudantsFragment extends Fragment {
         }
     }
 
-    // 6. Lifecycle methods must be public
     @Override
     public void onStart() {
         super.onStart();

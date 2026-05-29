@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphachat.adapter.MechinaAdapter;
 import com.example.alphachat.model.Mechina;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,8 +123,6 @@ public class MechinotFragment extends Fragment {
         for (Mechina item : allMechinot) {
             boolean matchesSearch = query.isEmpty() || item.getName().toLowerCase().contains(query);
             boolean matchesRegion = selectedRegion.equals("כל האזורים") || item.getRegion().contains(selectedRegion);
-
-            // Contains handles multi-value string subsets within the text attributes safely
             boolean matchesGender = selectedGender.equals("כל המגדרים") || item.getGender().contains(selectedGender);
             boolean matchesType = selectedType.equals("כל הסוגים") || item.getType().contains(selectedType);
 
@@ -132,7 +131,6 @@ public class MechinotFragment extends Fragment {
             }
         }
 
-        // Push dataset updates safely to structural layout frames
         adapter.notifyDataSetChanged();
     }
 }

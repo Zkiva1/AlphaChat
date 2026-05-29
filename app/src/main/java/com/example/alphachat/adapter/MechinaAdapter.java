@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import com.example.alphachat.ChatActivity;
 import com.example.alphachat.MechinaActivity;
 import com.example.alphachat.R;
 import com.example.alphachat.model.Mechina;
@@ -40,7 +41,6 @@ public class MechinaAdapter extends RecyclerView.Adapter<MechinaAdapter.MechinaV
         holder.nameText.setText(item.getName());
         holder.detailsText.setText(item.getRegion() + " | " + item.getGender() + " | " + item.getType());
 
-        // Glide intercepts the URL thread, checks local memory cache, or downloads asynchronously
         Glide.with(holder.itemView.getContext())
                 .load(item.getImage())
                 .placeholder(R.drawable.icon_search)
@@ -71,7 +71,6 @@ public class MechinaAdapter extends RecyclerView.Adapter<MechinaAdapter.MechinaV
             detailsText = itemView.findViewById(R.id.mechina_details_text);
             mechinaImage = itemView.findViewById(R.id.mechina_image_view);
 
-            // Forces Hebrew right-to-left layout alignment dynamically across older versions
             nameText.setTextDirection(View.TEXT_DIRECTION_RTL);
             detailsText.setTextDirection(View.TEXT_DIRECTION_RTL);
         }

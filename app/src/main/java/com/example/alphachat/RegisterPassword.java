@@ -3,7 +3,6 @@ package com.example.alphachat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +49,6 @@ public class RegisterPassword extends AppCompatActivity {
         progressBar = findViewById(R.id.register_password_progress_bar);
         progressBar.setVisibility(View.GONE);
 
-        Log.d("EMAIL_TEST", "Email: " + email);
 
         nextBtn.setOnClickListener(view -> {
 
@@ -115,11 +113,11 @@ public class RegisterPassword extends AppCompatActivity {
                                             .getCurrentUser()
                                             .getUid();
 
-                            Toast.makeText(
+                            /*Toast.makeText(
                                     RegisterPassword.this,
                                     "Account created",
                                     Toast.LENGTH_SHORT
-                            ).show();
+                            ).show();*/
 
                             Intent intent = new Intent(
                                     RegisterPassword.this,
@@ -131,23 +129,19 @@ public class RegisterPassword extends AppCompatActivity {
                             overridePendingTransition(0, 0);
 
                         } else {
-
                             Toast.makeText(
                                     RegisterPassword.this,
                                     task.getException().getMessage(),
                                     Toast.LENGTH_SHORT
                             ).show();
 
-                            Intent mainIntent = new Intent(this, register_login.class);
-                            mainIntent.setFlags(mainIntent.FLAG_ACTIVITY_NO_ANIMATION | mainIntent.FLAG_ACTIVITY_NEW_TASK | mainIntent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(mainIntent);
+                            Intent mainIntent = new Intent(RegisterPassword.this, register_login.class);
+                            mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-                            Intent intent = new Intent(
-                                    RegisterPassword.this,
-                                    RegisterEmail.class
-                            );
+                            Intent emailIntent = new Intent(RegisterPassword.this, RegisterEmail.class);
 
-                            startActivity(intent);
+                            startActivities(new Intent[]{mainIntent, emailIntent});
+
                             overridePendingTransition(0, 0);
                             finish();
                         }
