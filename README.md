@@ -1,58 +1,140 @@
 # Mechinet
 
-A modern Android chat application built for Israeli 12th-grade students looking for **מכינות** before military service.
-Mechinet helps users discover mechinot, chat with others, and explore programs in a clean, fast, and modern interface.
+Mechinet is an Android application designed to help users explore and connect with Israeli pre-military academies (Mechinot) and communicate with students, graduates, and staff members through an integrated chat system.
 
 ## Features
 
-* 🔐 User authentication
-* 💬 Real-time chat system
-* 🏫 Browse and explore mechinot
-* 🔎 Search functionality
-* 🌙 Modern UI with smooth transitions
-* 📱 Android-native experience
-* 🔗 Quick access to mechina websites
-* ⚡ Firebase-powered backend
+### Mechina Directory
+- Browse different Mechinot
+- View information about each Mechina
+- Filter by:
+  - Region
+  - Gender
+  - Type
+- Open official Mechina websites directly from the app
 
+### Real-Time Chat
+- One-on-one messaging
+- Recent conversations list
+- User search functionality
+- Firebase-powered real-time communication
 
-## Tech Stack
+### User Profiles
+- Registration and login
+- Email/password authentication
+- Profile management
+- Profile image support
 
-* Java
-* Android SDK
-* Firebase Authentication
-* Firebase Firestore / Realtime Database
-* XML Layouts
-* RecyclerView
-* Material Design Components
+### Notifications
+- Firebase Cloud Messaging (FCM)
+- Push notifications for new messages
+
+## Technologies Used
+
+### Android
+- Java
+- Android SDK
+- View Binding
+- Material Design Components
+
+### Firebase
+- Firebase Authentication
+- Cloud Firestore
+- Firebase Storage
+- Firebase Cloud Messaging (FCM)
+
+### Libraries
+- Glide (image loading)
+- Firebase UI Firestore
+- Gson
+- Android Image Cropper
+- Android WorkManager
+
+## Project Structure
+
+```
+app/
+├── activities/
+│   ├── MainActivity
+│   ├── ChatActivity
+│   ├── SearchUserActivity
+│   ├── MechinaActivity
+│   └── Authentication Activities
+│
+├── fragments/
+│   ├── ChatFragment
+│   ├── MechinotFragment
+│   ├── ProfileFragment
+│   ├── StudentsFragment
+│   └── TeachersFragment
+│
+├── adapters/
+│   ├── ChatRecyclerAdapter
+│   ├── RecentChatRecyclerAdapter
+│   ├── SearchUserRecyclerAdapter
+│   └── MechinaAdapter
+│
+├── model/
+│   ├── UserModel
+│   ├── ChatMessageModel
+│   ├── ChatroomModel
+│   └── Mechina
+│
+└── utils/
+    ├── FirebaseUtil
+    └── AndroidUtil
+```
+
+## Requirements
+
+- Android Studio
+- Android SDK 24+
+- Firebase Project
+- Google Services Configuration (`google-services.json`)
 
 ## Installation
 
-1. Clone the repository
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/Zkiva1/Mechinet.git
+git clone https://github.com/yourusername/Mechinet.git
 ```
 
-2. Open the project in Android Studio
+2. Open the project in Android Studio.
 
-3. Connect Firebase:
+3. Create a Firebase project.
 
-   * Create a Firebase project
-   * Add your `google-services.json`
-   * Enable Authentication and Firestore
+4. Enable:
+   - Authentication
+   - Firestore Database
+   - Storage
+   - Cloud Messaging
 
-4. Sync Gradle and run the app
+5. Download your `google-services.json` file and place it inside:
 
-## Contributing
+```text
+app/google-services.json
+```
 
-Pull requests are welcome.
-For major changes, please open an issue first to discuss what you'd like to change.
+6. Sync Gradle and run the project.
 
-## License
+## Screenshots
 
-This project is currently unlicensed.
+Add screenshots here:
 
-## Developer
+| Home | Chat | Mechina Page |
+|--------|--------|--------|
+| Screenshot | Screenshot | Screenshot |
 
-Created by Akiva
-GitHub: [Zkiva1/Mechinet](https://github.com/Zkiva1/Mechinet)
+## Future Improvements
+
+- Group chats
+- Advanced Mechina search filters
+- Favorite Mechinot
+- Events and announcements
+- Dark mode support
+- Hebrew/English localization
+
+## Author
+
+Developed as a project focused on improving communication and information accessibility between prospective students and Israeli Mechinot.
