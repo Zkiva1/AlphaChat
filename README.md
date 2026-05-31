@@ -97,7 +97,7 @@ app/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/Mechinet.git
+git clone https://github.com/Zkiva1/Mechinet.git
 ```
 
 2. Open the project in Android Studio.
@@ -118,23 +118,11 @@ app/google-services.json
 
 6. Sync Gradle and run the project.
 
-## Screenshots
-
-Add screenshots here:
-
-| Home | Chat | Mechina Page |
-|--------|--------|--------|
-| Screenshot | Screenshot | Screenshot |
-
 ## Future Improvements
 
 - Group chats
-- Advanced Mechina search filters
 - Favorite Mechinot
-- Events and announcements
 - Dark mode support
 - Hebrew/English localization
-
-## Author
 
 Developed as a project focused on improving communication and information accessibility between prospective students and Israeli Mechinot.
