@@ -17,8 +17,6 @@ import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.AndroidUtil;
 import com.example.alphachat.utils.FirebaseUtil;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 public class SplashActivity extends AppCompatActivity {
 

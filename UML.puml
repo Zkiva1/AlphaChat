@@ -1,0 +1,404 @@
+@startuml
+class com.example.alphachat.utils.FirebaseUtil {
++ {static} String currentUserId()
++ {static} boolean isLoggedIn()
++ {static} DocumentReference currentUserDetails()
++ {static} void logout()
++ {static} DocumentReference getChatroomReference(String)
++ {static} String getChatroomId(String,String)
++ {static} CollectionReference getChatroomMessageReference(String)
++ {static} CollectionReference allChatroomCollectionReference()
++ {static} DocumentReference getOtherUserFromChatroom(List<String>)
++ {static} String timestampToString(Timestamp)
++ {static} StorageReference getCurrentProfilePicRef()
++ {static} CollectionReference allUserCollectionReference()
+}
+
+class com.example.alphachat.SearchUserActivity {
+- SearchView searchInput
+- ImageButton backButton
+- RecyclerView recyclerView
+~ SearchUserRecyclerAdapter adapter
+# void onCreate(Bundle)
+~ void setupSearchRecyclerView(String)
+# void onStart()
+# void onStop()
+}
+
+
+class com.example.alphachat.ChatFragment {
+~ RecyclerView recyclerView
+~ RecentChatRecyclerAdapter adapter
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+~ void setupRecyclerView()
++ void onStart()
++ void onStop()
++ void onResume()
+}
+
+
+class com.example.alphachat.utils.AndroidUtil {
++ {static} void showToast(Context,String)
++ {static} void passUserModelAsIntent(Intent,UserModel)
++ {static} UserModel getUserModelFromIntent(Intent)
++ {static} void passMechinaModelAsIntent(Intent,Mechina)
++ {static} Mechina getMechinaModelFromIntent(Intent)
++ {static} void setProfilePic(Context,Uri,ImageView)
+}
+
+class com.example.alphachat.utils.AndroidUtil$SafeLinearLayoutManager {
++ void onLayoutChildren(RecyclerView.Recycler,RecyclerView.State)
+}
+
+class com.example.alphachat.SplashActivity {
+# void onCreate(Bundle)
+}
+
+class com.example.alphachat.MechinotFragment {
+- SearchView searchInput
+- RecyclerView recyclerView
+- Spinner spinnerRegion
+- List<Mechina> allMechinot
+- List<Mechina> filteredList
+- MechinaAdapter adapter
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void setupSpinners()
+- void bindSpinnerAdapter(Spinner,String[])
+- void applyFilters()
+}
+
+
+class com.example.alphachat.RegisterPassword {
+~ String email
+~ EditText passwordInput
+~ Button nextBtn
+~ ProgressBar progressBar
+~ FirebaseAuth mAuth
+# void onCreate(Bundle)
+}
+
+
+class com.example.alphachat.model.UserModel {
+- String email
+- String username
+- Timestamp createdTimestamp
+- String userId
+- String profilePicUrl
+- String fcmToken
+- String occupation
+- String mechina
++ String getEmail()
++ void setEmail(String)
++ String getUsername()
++ void setUsername(String)
++ Timestamp getCreatedTimestamp()
++ void setCreatedTimestamp(Timestamp)
++ String getUserId()
++ void setUserId(String)
++ String getProfilePicUrl()
++ void setProfilePicUrl(String)
++ String getFcmToken()
++ void setFcmToken(String)
++ String getOccupation()
++ void setOccupation(String)
++ String getMechina()
++ void setMechina(String)
+}
+
+
+class com.example.alphachat.MechinaActivity {
+~ ImageButton backButton
+~ TextView mechinaName
+~ Mechina mechinaModel
+~ BottomNavigationView bottomNavigationView
+# void onCreate(Bundle)
+- void loadFragment(Fragment)
+}
+
+
+class com.example.alphachat.ForgotPasswordActivity {
+~ Button btnReset
+~ EditText edtEmail
+~ ProgressBar progressBar
+~ FirebaseAuth mAuth
+~ String strEmail
+# void onCreate(Bundle)
+- void ResetPassword()
+}
+
+
+class com.example.alphachat.JsonReader {
++ {static} List<Mechina> convertJsonToObject(Context)
+}
+
+class com.example.alphachat.RegisterEmail {
+~ EditText emailInput
+~ Button nextBtn
+~ ProgressBar progressBar
+~ FirebaseAuth mAuth
+# void onCreate(Bundle)
+}
+
+
+class com.example.alphachat.MainActivity {
+~ BottomNavigationView bottomNavigationView
+~ ImageButton searchButton
+~ ChatFragment chatFragment
+~ MechinotFragment mapFragment
+~ ProfileFragment profileFragment
+# void onCreate(Bundle)
+~ void checkNotificationPermissionAndGetToken()
+~ void getFCMToken()
+}
+
+
+class com.example.alphachat.LoginUsernameActivity {
+~ EditText registerUsername
+~ Button registerUsernameBtn
+~ ProgressBar progressBar
+~ String email
+# void onCreate(Bundle)
+}
+
+
+class com.example.alphachat.adapter.RecentChatRecyclerAdapter {
+~ Context context
+# void onBindViewHolder(ChatroomModelViewHolder,int,ChatroomModel)
++ ChatroomModelViewHolder onCreateViewHolder(ViewGroup,int)
+}
+
+
+class com.example.alphachat.adapter.RecentChatRecyclerAdapter$ChatroomModelViewHolder {
+~ TextView usernameText
+~ ImageView profilePic
+}
+
+class com.example.alphachat.FCMNotificationService {
++ void onMessageReceived(RemoteMessage)
+- void showNotification(String,String,String)
++ void onNewToken(String)
+}
+
+class com.example.alphachat.model.ChatroomModel {
+~ String chatroomId
+~ List<String> userIds
+~ com.google.firebase.Timestamp lastMessageTimestamp
+~ String lastMessageSenderId
+~ String lastMessage
++ String getChatroomId()
++ void setChatroomId(String)
++ List<String> getUserIds()
++ void setUserIds(List<String>)
++ Timestamp getLastMessageTimestamp()
++ void setLastMessageTimestamp(Timestamp)
++ String getLastMessageSenderId()
++ void setLastMessageSenderId(String)
++ String getLastMessage()
++ void setLastMessage(String)
+}
+
+
+class com.example.alphachat.ChatActivity {
+~ UserModel otherUser
+~ String chatroomId
+~ ChatroomModel chatroomModel
+~ ChatRecyclerAdapter adapter
+~ EditText messageInput
+~ ImageButton sendMessageBtn
+~ TextView otherUsername
+~ ImageView profilePic
+~ RecyclerView recyclerView
+# void onCreate(Bundle)
+~ void setupChatRecyclerView()
+~ void sendMessageToUser(String)
+~ void getOrCreateChatroomModel()
+}
+
+
+class com.example.alphachat.register_login {
+~ Button login_btn
+~ TextView forgotPasswordTv
+~ EditText login_email
+~ FirebaseAuth mAuth
+~ ProgressBar progressBar
+# void onCreate(Bundle)
+}
+
+
+class com.example.alphachat.OccupationRegisterActivity {
+- AutoCompleteTextView occupationPicker
+- TextInputLayout mechiaPickerLayout
+- AutoCompleteTextView mechiaPicker
+- ProgressBar progressBar
+- Button registerOccupationBtn
+- String email
+- String username
+- List<Mechina> fullMechinaList
+- List<String> allMechinotNames
+# void onCreate(Bundle)
+- void setupListeners()
+- void setOccupation()
+- void setInProgress(boolean)
+}
+
+
+class com.example.alphachat.adapter.SearchUserRecyclerAdapter {
+~ Context context
+# void onBindViewHolder(UserModelViewHolder,int,UserModel)
++ UserModelViewHolder onCreateViewHolder(ViewGroup,int)
+}
+
+
+class com.example.alphachat.adapter.SearchUserRecyclerAdapter$UserModelViewHolder {
+~ TextView usernameText
+~ ImageView profilePic
+}
+
+class com.example.alphachat.StudantsFragment {
+- SearchUserRecyclerAdapter adapter
+- RecyclerView recyclerView
+- Mechina mechinaModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void setupSearchRecyclerView()
++ void onStart()
++ void onStop()
+}
+
+
+class com.example.alphachat.adapter.MechinaAdapter {
+- List<Mechina> displayList
++ MechinaViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MechinaViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.alphachat.adapter.MechinaAdapter$MechinaViewHolder {
+~ TextView nameText
+~ ImageView mechinaImage
+}
+
+class com.example.alphachat.model.ChatMessageModel {
+- String message
+- String senderId
+- Timestamp timestamp
++ String getMessage()
++ void setMessage(String)
++ String getSenderId()
++ void setSenderId(String)
++ Timestamp getTimestamp()
++ void setTimestamp(Timestamp)
+}
+
+
+class com.example.alphachat.model.Mechina {
+- String name
+- String region
+- String gender
+- String type
+- String link
+- String image
++ String getName()
++ void setName(String)
++ String getRegion()
++ void setRegion(String)
++ String getGender()
++ void setGender(String)
++ String getType()
++ void setType(String)
++ String getLink()
++ void setLink(String)
++ String getImage()
++ void setImage(String)
+}
+
+
+class com.example.alphachat.TeachersFragment {
+- SearchUserRecyclerAdapter adapter
+- RecyclerView recyclerView
+- Mechina mechinaModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void setupSearchRecyclerView()
++ void onStart()
++ void onStop()
+}
+
+
+class com.example.alphachat.adapter.ChatRecyclerAdapter {
+~ Context context
+# void onBindViewHolder(ChatModelViewHolder,int,ChatMessageModel)
++ ChatModelViewHolder onCreateViewHolder(ViewGroup,int)
+}
+
+
+class com.example.alphachat.adapter.ChatRecyclerAdapter$ChatModelViewHolder {
+~ LinearLayout leftChatLayout
+~ TextView leftChatTextView
+}
+
+class com.example.alphachat.ProfileFragment {
+~ ImageView profilePic
+~ EditText usernameInput
+~ TextInputLayout mechinaLayout
+~ AutoCompleteTextView occupationSpinner
+~ Button updateProfileBtn
+~ ProgressBar progressBar
+~ TextView logoutBtn
+~ LinearLayout cropContainerLayout
+~ CropImageView cropImageView
+~ Button btnCancelCrop
+~ Uri croppedImageUri
+~ UserModel currentUserModel
+- List<Mechina> fullMechinaList
+- List<String> allMechinotNames
+- ActivityResultLauncher<String> pickImageLauncher
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void setupOccupationAndMechina()
+- void executeLocalLogout()
+- void toggleMainActivityUi(int)
+~ void updateBtnClick()
+~ void updateToFirestore()
+~ void getUserData()
+~ void setInProgress(boolean)
+}
+
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.SearchUserActivity
+androidx.fragment.app.Fragment <|-- com.example.alphachat.ChatFragment
+com.example.alphachat.utils.AndroidUtil +.. com.example.alphachat.utils.AndroidUtil$SafeLinearLayoutManager
+com.example.alphachat.utils.LinearLayoutManager <|-- com.example.alphachat.utils.AndroidUtil$SafeLinearLayoutManager
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.SplashActivity
+androidx.fragment.app.Fragment <|-- com.example.alphachat.MechinotFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.RegisterPassword
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.MechinaActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.ForgotPasswordActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.RegisterEmail
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.LoginUsernameActivity
+com.firebase.ui.firestore.FirestoreRecyclerAdapter <|-- com.example.alphachat.adapter.RecentChatRecyclerAdapter
+com.example.alphachat.adapter.RecentChatRecyclerAdapter +.. com.example.alphachat.adapter.RecentChatRecyclerAdapter$ChatroomModelViewHolder
+com.example.alphachat.adapter.ViewHolder <|-- com.example.alphachat.adapter.RecentChatRecyclerAdapter$ChatroomModelViewHolder
+com.google.firebase.messaging.FirebaseMessagingService <|-- com.example.alphachat.FCMNotificationService
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.ChatActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.register_login
+androidx.appcompat.app.AppCompatActivity <|-- com.example.alphachat.OccupationRegisterActivity
+com.firebase.ui.firestore.FirestoreRecyclerAdapter <|-- com.example.alphachat.adapter.SearchUserRecyclerAdapter
+com.example.alphachat.adapter.SearchUserRecyclerAdapter +.. com.example.alphachat.adapter.SearchUserRecyclerAdapter$UserModelViewHolder
+com.example.alphachat.adapter.ViewHolder <|-- com.example.alphachat.adapter.SearchUserRecyclerAdapter$UserModelViewHolder
+androidx.fragment.app.Fragment <|-- com.example.alphachat.StudantsFragment
+com.example.alphachat.adapter.Adapter <|-- com.example.alphachat.adapter.MechinaAdapter
+com.example.alphachat.adapter.MechinaAdapter +.. com.example.alphachat.adapter.MechinaAdapter$MechinaViewHolder
+com.example.alphachat.adapter.ViewHolder <|-- com.example.alphachat.adapter.MechinaAdapter$MechinaViewHolder
+java.io.Serializable <|.. com.example.alphachat.model.Mechina
+androidx.fragment.app.Fragment <|-- com.example.alphachat.TeachersFragment
+com.firebase.ui.firestore.FirestoreRecyclerAdapter <|-- com.example.alphachat.adapter.ChatRecyclerAdapter
+com.example.alphachat.adapter.ChatRecyclerAdapter +.. com.example.alphachat.adapter.ChatRecyclerAdapter$ChatModelViewHolder
+com.example.alphachat.adapter.ViewHolder <|-- com.example.alphachat.adapter.ChatRecyclerAdapter$ChatModelViewHolder
+androidx.fragment.app.Fragment <|-- com.example.alphachat.ProfileFragment
+@enduml

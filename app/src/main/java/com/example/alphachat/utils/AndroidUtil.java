@@ -3,10 +3,9 @@ package com.example.alphachat.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.appcompat.widget.SearchView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 

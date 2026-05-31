@@ -132,7 +132,6 @@ public class ChatActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                    if(task.isSuccessful()) {
                        messageInput.setText("");
-                       sendNotification(message);
                    }
                 });
     }
@@ -152,10 +151,6 @@ public class ChatActivity extends AppCompatActivity {
                }
            }
         });
-    }
-
-    void sendNotification(String message) {
-
     }
 
 }

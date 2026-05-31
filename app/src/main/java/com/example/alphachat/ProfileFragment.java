@@ -39,7 +39,6 @@ public class ProfileFragment extends Fragment {
     ImageView profilePic;
     EditText usernameInput, emailInput;
 
-    // New Views for Occupation and Mechina
     TextInputLayout mechinaLayout, occupationLayout;
     AutoCompleteTextView occupationSpinner, mechinaSpinner;
 

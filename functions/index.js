@@ -62,7 +62,7 @@ exports.sendChatNotification = onDocumentCreated(
                     title: senderName || "New Message",
                     body: messageText || "",
                 },
-                // Add your custom key-value pairs here
+
                 data: {
                     userId: senderId // Key: "userId", Value: the sending user's ID string
                 },

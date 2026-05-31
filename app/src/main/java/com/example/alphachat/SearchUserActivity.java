@@ -1,7 +1,6 @@
 package com.example.alphachat;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;

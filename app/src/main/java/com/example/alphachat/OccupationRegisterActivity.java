@@ -130,20 +130,20 @@ public class OccupationRegisterActivity extends AppCompatActivity {
         // 1. Validate Occupation
         if (occupation.isEmpty()) {
             occupationPicker.setError("Please enter occupation");
-            return; // Stop execution
+            return;
         }
 
         // 2. Validate Mechina Text Presence
         if (mechina.isEmpty()) {
             mechiaPickerLayout.setError("Please enter mechina");
-            return; // Stop execution
+            return;
         }
 
         // 3. Validate Mechina against official list (Only if the layout is currently visible)
         if (mechiaPickerLayout.getVisibility() == View.VISIBLE && !allMechinotNames.contains(mechina)) {
             mechiaPickerLayout.setError("Please select a valid Mechina from the list");
             mechiaPicker.setText("");
-            return; // Stop execution
+            return;
         }
 
         // 4. Data is completely valid - proceed with saving
