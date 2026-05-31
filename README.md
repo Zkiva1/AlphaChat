@@ -2,6 +2,12 @@
 
 Mechinet is an Android application designed to help users explore and connect with Israeli pre-military academies (Mechinot) and communicate with students, graduates, and staff members through an integrated chat system.
 
+## Project Documentation
+
+For detailed documentation, requirements analysis, design diagrams, and development process, see:
+
+[📄 Mechinet Project Documentation](https://docs.google.com/document/d/1aEylbgZKup3nAOCc7Sk199Cwh-6wgA3ws84vzlqNoSo/edit?usp=sharing)
+
 ## Features
 
 ### Mechina Directory
