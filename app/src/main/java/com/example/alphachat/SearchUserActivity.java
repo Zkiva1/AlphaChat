@@ -20,14 +20,35 @@ import com.example.alphachat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
+/**
+ * Activity that allows users to search for other participants by username.
+ *
+ * This activity provides a search interface that queries the Firestore {@code users}
+ * collection in real-time as the user types. It displays results in a RecyclerView
+ * using the {@link SearchUserRecyclerAdapter}.
+ *
+ * Cloud Firestore {@code users} collection.
+ */
 public class SearchUserActivity extends AppCompatActivity {
 
+    /** The search bar for entering usernames. Binds to {@code search_username_input}. */
     private SearchView searchInput;
+    /** Button to navigate back to the previous screen. Binds to {@code back_btn}. */
     private ImageButton backButton;
+    /** RecyclerView to display search results. Binds to {@code search_user_recycler_view}. */
     private RecyclerView recyclerView;
 
+    /** Adapter for binding user search results to the RecyclerView. */
     SearchUserRecyclerAdapter adapter;
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components, sets up Edge-to-Edge display, and configures the
+     * {@link SearchView} with query listeners to trigger real-time search.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +95,14 @@ public class SearchUserActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Configures the RecyclerView with a Firestore query based on the search term.
+     *
+     * Uses a prefix-matching strategy to find users whose usernames start with
+     * the provided string.
+     *
+     * @param searchTerm The string to search for in usernames.
+     */
     void setupSearchRecyclerView(String searchTerm) {
         Query query = FirebaseUtil.allUserCollectionReference()
                 .whereGreaterThanOrEqualTo("username", searchTerm)
@@ -97,6 +126,11 @@ public class SearchUserActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Called when the activity is visible to the user.
+     *
+     * Resumes the Firestore adapter listening if it exists.
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -105,6 +139,11 @@ public class SearchUserActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Called when the activity is no longer visible.
+     *
+     * Stops the Firestore adapter from listening to conserve resources.
+     */
     @Override
     protected void onStop() {
         super.onStop();
@@ -115,5 +154,3 @@ public class SearchUserActivity extends AppCompatActivity {
 
 
 }
-
-

@@ -18,8 +18,26 @@ import com.example.alphachat.utils.AndroidUtil;
 import com.example.alphachat.utils.FirebaseUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * The initial entry point of the application.
+ *
+ * This activity handles the initial routing logic based on the user's authentication
+ * state and profile completeness. It redirects users to login, registration, or the
+ * main activity. It also processes notification intents to jump directly to chats.
+ *
+ * Firebase Authentication, Cloud Firestore {@code users} collection.
+ */
 public class SplashActivity extends AppCompatActivity {
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Determines the next screen to display. If launched via a notification, it
+     * routes to the specific chat. Otherwise, it checks for profile completeness
+     * and redirects accordingly after a brief delay.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

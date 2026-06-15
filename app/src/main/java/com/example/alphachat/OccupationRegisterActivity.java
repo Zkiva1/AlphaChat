@@ -26,19 +26,44 @@ import com.google.firebase.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity for the final step of registration: occupation and academy selection.
+ *
+ * This activity handles the collection of professional details (e.g., Student, Teacher)
+ * and academy affiliation. It persists the complete {@link UserModel} to Firestore.
+ *
+ * Cloud Firestore {@code users} collection.
+ */
 public class OccupationRegisterActivity extends AppCompatActivity {
 
+    /** Picker for the user's occupation. Binds to {@code register_occupation_spinner}. */
     private AutoCompleteTextView occupationPicker;
+    /** Layout container for academy selection. Binds to {@code mechia_picker_layout}. */
     private TextInputLayout mechiaPickerLayout;
+    /** Picker for selecting the academy (Mechina). Binds to {@code mechia_picker}. */
     private AutoCompleteTextView mechiaPicker;
+    /** Progress bar for account finalization feedback. Binds to {@code register_occupation_progress_bar}. */
     private ProgressBar progressBar;
+    /** Button to complete the registration process. Binds to {@code register_occupation_btn}. */
     private Button registerOccupationBtn;
 
+    /** The user's email address passed from previous activities. */
     private String email;
+    /** The user's username passed from previous activities. */
     private String username;
+    /** Full list of academies loaded from local JSON. */
     private List<Mechina> fullMechinaList = new ArrayList<>();
+    /** List of academy names for the auto-complete spinner. */
     private List<String> allMechinotNames = new ArrayList<>();
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components, loads academy data, sets up auto-complete adapters,
+     * and configures visibility logic for academy selection.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +117,9 @@ public class OccupationRegisterActivity extends AppCompatActivity {
         registerOccupationBtn.setOnClickListener(view -> setOccupation());
     }
 
+    /**
+     * Configures interactive listeners for UI validation and dynamic visibility.
+     */
     private void setupListeners() {
         mechiaPicker.setOnFocusChangeListener((view, hasFocus) -> {
             if (!hasFocus) {
@@ -123,6 +151,12 @@ public class OccupationRegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Validates user inputs and persists the new user profile to Firestore.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     private void setOccupation() {
         String occupation = occupationPicker.getText().toString().trim();
         String mechina = mechiaPicker.getText().toString().trim();
@@ -174,6 +208,11 @@ public class OccupationRegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Updates the UI to show or hide the loading progress bar.
+     *
+     * @param inProgress {@code true} to show progress bar, {@code false} to show button.
+     */
     private void setInProgress(boolean inProgress) {
         if (inProgress) {
             progressBar.setVisibility(View.VISIBLE);

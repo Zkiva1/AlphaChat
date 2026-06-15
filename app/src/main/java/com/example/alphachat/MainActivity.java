@@ -20,17 +20,39 @@ import com.example.alphachat.utils.FirebaseUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+/**
+ * The main container activity for the application.
+ *
+ * This activity manages the primary navigation flow using a {@link BottomNavigationView}
+ * to switch between {@link ChatFragment}, {@link MechinotFragment}, and {@link ProfileFragment}.
+ * It also handles FCM token registration and notification permissions.
+ *
+ * Firebase Cloud Messaging, Cloud Firestore {@code users} collection.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /** The bottom navigation bar for switching fragments. Binds to {@code bottom_navigation}. */
     BottomNavigationView bottomNavigationView;
+    /** Button to launch the user search activity. Binds to {@code main_search_btn}. */
     ImageButton searchButton;
+    /** Persistent instance of the chat fragment. */
     ChatFragment chatFragment;
+    /** Persistent instance of the academies browser fragment. */
     MechinotFragment mapFragment;
+    /** Persistent instance of the user profile fragment. */
     ProfileFragment profileFragment;
 
 
 
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Sets up Edge-to-Edge UI, initializes fragments, configures navigation listeners,
+     * and initiates notification permission checks.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Checks for POST_NOTIFICATIONS permission on Android 13+ and retrieves FCM token.
+     *
+     * If permission is granted or the OS version is lower than Tiramisu, it proceeds
+     * to fetch the FCM token. Otherwise, it requests permission from the user.
+     */
     void checkNotificationPermissionAndGetToken() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
@@ -91,6 +119,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Retrieves the Firebase Cloud Messaging token and updates the user's Firestore document.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     void getFCMToken() {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
             if(task.isSuccessful()) {

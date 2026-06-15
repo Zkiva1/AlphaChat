@@ -15,13 +15,31 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+/**
+ * Activity for the third step of user registration: username entry.
+ *
+ * This activity handles the collection and validation of the user's chosen display
+ * name during the sign-up process.
+ */
 public class LoginUsernameActivity extends AppCompatActivity {
 
+    /** Input field for the user's chosen username. Binds to {@code register_username}. */
     EditText registerUsername;
+    /** Button to proceed to the next registration step. Binds to {@code register_username_btn}. */
     Button registerUsernameBtn;
+    /** Progress bar for UI feedback. Binds to {@code register_username_progress_bar}. */
     ProgressBar progressBar;
+    /** The user's email address passed from previous steps. */
     String email;
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components and sets up validation logic for the username input.
+     * Redirects to the occupation selection screen upon valid input.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

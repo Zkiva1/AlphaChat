@@ -35,18 +35,47 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Activity for direct messaging between two users.
+ *
+ * This activity facilitates a real-time chat interface. It manages chat room creation,
+ * message persistence in Firestore, and UI updates for incoming and outgoing messages.
+ * It also handles keyboard-aware padding for the message input area.
+ *
+ * Cloud Firestore {@code chatrooms} collection and {@code chats} sub-collection.
+ */
 public class ChatActivity extends AppCompatActivity {
 
+    /** The model of the user being chatted with. */
     UserModel otherUser;
+    /** The deterministic ID of the chat room between the two users. */
     String chatroomId;
+    /** The model representing the chat room metadata. */
     ChatroomModel chatroomModel;
+    /** Adapter for displaying chat messages. */
     ChatRecyclerAdapter adapter;
+
+    /** Input field for typing new messages. Binds to {@code chat_message_input}. */
     EditText messageInput;
-    ImageButton sendMessageBtn, backBtn;
+    /** Button to send the typed message. Binds to {@code message_send_btn}. */
+    ImageButton sendMessageBtn;
+    /** Button to navigate back. Binds to {@code back_btn}. */
+    ImageButton backBtn;
+    /** Displays the name of the other participant. Binds to {@code other_username}. */
     TextView otherUsername;
+    /** Displays the other participant's profile picture. Binds to {@code profile_pic_image_view}. */
     ImageView profilePic;
+    /** RecyclerView for the conversation history. Binds to {@code chat_recycler_view}. */
     RecyclerView recyclerView;
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components, sets up keyboard-responsive padding, extracts the target
+     * user from the intent, and initiates chat room and message listeners.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +129,12 @@ public class ChatActivity extends AppCompatActivity {
         setupChatRecyclerView();
     }
 
+    /**
+     * Configures the RecyclerView with a real-time Firestore query for messages.
+     *
+     * Uses {@link ChatRecyclerAdapter} and a reversed {@link LinearLayoutManager} to
+     * show messages in reverse chronological order, scrolling to the bottom on new inserts.
+     */
     void setupChatRecyclerView(){
         Query query = FirebaseUtil.getChatroomMessageReference(chatroomId)
                 .orderBy("timestamp", Query.Direction.DESCENDING);
@@ -122,6 +157,17 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sends a chat message to the target user.
+     *
+     * Updates the parent chat room document with the last message metadata and
+     * adds a new document to the {@code chats} sub-collection.
+     *
+     * @param message The text content of the message to send.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     void sendMessageToUser(String message) {
         chatroomModel.setLastMessageTimestamp(Timestamp.now());
         chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
@@ -136,6 +182,12 @@ public class ChatActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Retrieves existing chat room metadata or creates a new one if it doesn't exist.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     void getOrCreateChatroomModel() {
         FirebaseUtil.getChatroomReference(chatroomId).get().addOnCompleteListener(task -> {
            if(task.isSuccessful()) {

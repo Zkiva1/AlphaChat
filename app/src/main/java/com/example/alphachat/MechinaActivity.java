@@ -19,13 +19,34 @@ import com.example.alphachat.model.Mechina;
 import com.example.alphachat.utils.AndroidUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Activity for displaying detailed information about a specific Mechina (academy).
+ *
+ * This activity acts as a container for academy-specific data, using a
+ * {@link BottomNavigationView} to toggle between {@link StudantsFragment} and
+ * {@link TeachersFragment}. It also provides access to the academy's official website.
+ */
 public class MechinaActivity extends AppCompatActivity {
 
-    ImageButton backButton, mechinaWebsiteBtn;
+    /** Button to navigate back. Binds to {@code mechina_back_btn}. */
+    ImageButton backButton;
+    /** Button to launch the academy's official website. Binds to {@code website_btn}. */
+    ImageButton mechinaWebsiteBtn;
+    /** Displays the name of the academy. Binds to {@code mechina_name}. */
     TextView mechinaName;
+    /** The data model representing the academy being viewed. */
     Mechina mechinaModel;
+    /** Bottom navigation for switching between students and teachers. Binds to {@code mechina_navigation}. */
     BottomNavigationView bottomNavigationView;
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components, extracts academy details from the intent, and
+     * sets up the fragment navigation flow.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +102,11 @@ public class MechinaActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Replaces the main frame with a new fragment and injects academy data.
+     *
+     * @param fragment The {@link Fragment} to be displayed.
+     */
     private void loadFragment(Fragment fragment) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("mechina_model", mechinaModel);

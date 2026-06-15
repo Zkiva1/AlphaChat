@@ -34,33 +34,68 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fragment that allows the user to view and update their profile information.
+ *
+ * This fragment manages user identity details, professional context (occupation and academy),
+ * and profile picture management including image picking and cropping. It interacts with
+ * Firebase Auth, Firestore, and Storage.
+ *
+ * Firebase Authentication, Cloud Firestore {@code users} collection, Firebase Storage {@code profile_pic}.
+ */
 public class ProfileFragment extends Fragment {
 
+    /** Displays the user's current profile picture. Binds to {@code profile_image_view}. */
     ImageView profilePic;
+    /** Inputs for the user's name and email. Binds to {@code profile_username} and {@code profile_email}. */
     EditText usernameInput, emailInput;
 
+    /** Layout containers for professional context inputs. Binds to {@code profile_mechina_layout} and {@code profile_occupation_layout}. */
     TextInputLayout mechinaLayout, occupationLayout;
+    /** Spinners for selecting occupation and Mechina. Binds to {@code profile_occupation_spinner} and {@code profile_mechina_spinner}. */
     AutoCompleteTextView occupationSpinner, mechinaSpinner;
 
+    /** Button to save profile changes. Binds to {@code profile_update_btn}. */
     Button updateProfileBtn;
+    /** Displays progress during async operations. Binds to {@code profile_progress_bar}. */
     ProgressBar progressBar;
+    /** Button to sign out the user. Binds to {@code logout_btn}. */
     TextView logoutBtn;
 
+    /** Container for the image cropping UI. Binds to {@code crop_container_layout}. */
     LinearLayout cropContainerLayout;
+    /** View for interactive image cropping. Binds to {@code crop_image_view}. */
     CropImageView cropImageView;
+    /** Buttons to control the cropping flow. Binds to {@code btn_cancel_crop} and {@code btn_confirm_crop}. */
     Button btnCancelCrop, btnConfirmCrop;
+    /** The URI of the resulting cropped image. */
     Uri croppedImageUri;
 
+    /** The current user's profile model. */
     UserModel currentUserModel;
 
+    /** List of all available academies for the spinner. */
     private List<Mechina> fullMechinaList = new ArrayList<>();
+    /** List of academy names for the auto-complete spinner. */
     private List<String> allMechinotNames = new ArrayList<>();
 
+    /** Launcher for the system image picker. */
     private ActivityResultLauncher<String> pickImageLauncher;
 
+    /**
+     * Required empty public constructor for fragment instantiation.
+     */
     public ProfileFragment() {
     }
 
+    /**
+     * Called when the fragment is first created.
+     *
+     * Registers the image picker activity result contract and sets up the cropping
+     * flow trigger.
+     *
+     * @param savedInstanceState If non-null, this fragment is being re-constructed.
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +112,17 @@ public class ProfileFragment extends Fragment {
         );
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * Initializes all UI components, sets up click listeners for profile picture,
+     * update button, and logout. Triggers data loading.
+     *
+     * @param inflater The {@link LayoutInflater} to inflate views.
+     * @param container The parent view to attach the UI to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -172,6 +218,12 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Initializes the occupation and Mechina spinners.
+     *
+     * Loads academy names from a local JSON and configures the auto-complete adapters.
+     * Sets up visibility logic for the Mechina input based on the selected occupation.
+     */
     private void setupOccupationAndMechina() {
         if (getContext() == null) return;
 
@@ -219,6 +271,9 @@ public class ProfileFragment extends Fragment {
         mechinaSpinner.setOnItemClickListener((parent, v, position, id) -> mechinaLayout.setError(null));
     }
 
+    /**
+     * Finalizes the logout process by navigating back to the splash screen.
+     */
     private void executeLocalLogout() {
         FirebaseUtil.logout();
 
@@ -235,6 +290,11 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    /**
+     * Toggles the visibility of main activity UI elements during cropping.
+     *
+     * @param visibility The visibility state (e.g., {@link View#GONE}, {@link View#VISIBLE}).
+     */
     private void toggleMainActivityUi(int visibility) {
         if (getActivity() != null) {
             View toolbar = getActivity().findViewById(R.id.main_toolbar);
@@ -247,6 +307,12 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    /**
+     * Handles the click event for the profile update button.
+     *
+     * Performs validation on user inputs and initiates image upload and Firestore
+     * update sequences.
+     */
     void updateBtnClick() {
         String newUsername = usernameInput.getText().toString().trim();
         String newOccupation = occupationSpinner.getText().toString().trim();
@@ -313,6 +379,12 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    /**
+     * Persists the current user model to Firestore.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     void updateToFirestore() {
         FirebaseUtil.currentUserDetails().set(currentUserModel)
                 .addOnCompleteListener(task -> {
@@ -325,6 +397,15 @@ public class ProfileFragment extends Fragment {
                 });
     }
 
+    /**
+     * Fetches the current user's profile data from Firestore.
+     *
+     * Populates UI fields with the retrieved data and configures professional
+     * context visibility.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     void getUserData() {
         setInProgress(true);
 
@@ -370,6 +451,11 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    /**
+     * Updates the UI to show or hide the loading progress bar.
+     *
+     * @param inProgress {@code true} to show progress bar and hide update button, {@code false} otherwise.
+     */
     void setInProgress(boolean inProgress) {
         if (inProgress) {
             progressBar.setVisibility(View.VISIBLE);

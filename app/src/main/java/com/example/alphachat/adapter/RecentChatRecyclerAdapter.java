@@ -21,15 +21,44 @@ import com.example.alphachat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+/**
+ * Adapter for displaying the list of recent chat conversations.
+ *
+ * This class uses {@link FirestoreRecyclerAdapter} to show active chat rooms from the
+ * {@code chatrooms} collection in real-time. It fetches the other participant's
+ * profile information asynchronously for each row.
+ *
+ * Cloud Firestore {@code chatrooms} and {@code users} collections.
+ */
 public class RecentChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatroomModel, RecentChatRecyclerAdapter.ChatroomModelViewHolder> {
 
+    /** The context of the activity where the chat list is displayed. */
     Context context;
 
+    /**
+     * Constructs a new RecentChatRecyclerAdapter.
+     *
+     * @param options The {@link FirestoreRecyclerOptions} for {@link ChatroomModel}.
+     * @param context The {@link Context} of the parent Activity or Fragment.
+     */
     public RecentChatRecyclerAdapter(@NonNull FirestoreRecyclerOptions<ChatroomModel> options, Context context) {
         super(options);
         this.context = context;
     }
 
+    /**
+     * Called by RecyclerView to display the data at the specified position.
+     *
+     * This method initiates an asynchronous fetch of the other user's profile details.
+     * It then binds the room's last message, sender info, and profile picture to the UI.
+     *
+     * @param holder The {@link ChatroomModelViewHolder} to update.
+     * @param position The position of the item within the adapter.
+     * @param model The {@link ChatroomModel} containing the room metadata.
+     *
+     * @implNote This method initiates an asynchronous Firestore operation; the UI is updated
+     * via the supplied callback on the main thread.
+     */
     @Override
     protected void onBindViewHolder(@NonNull ChatroomModelViewHolder holder, int position, @NonNull ChatroomModel model) {
         FirebaseUtil.getOtherUserFromChatroom(model.getUserIds())
@@ -71,6 +100,13 @@ public class RecentChatRecyclerAdapter extends FirestoreRecyclerAdapter<Chatroom
                 });
     }
 
+    /**
+     * Called by RecyclerView to create a new ViewHolder.
+     *
+     * @param parent The {@link ViewGroup} into which the new View will be added.
+     * @param viewType The view type of the new View.
+     * @return A new {@link ChatroomModelViewHolder} that holds the {@code recent_chat_recycler_row} view.
+     */
     @NonNull
     @Override
     public ChatroomModelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -78,9 +114,26 @@ public class RecentChatRecyclerAdapter extends FirestoreRecyclerAdapter<Chatroom
         return new ChatroomModelViewHolder(view);
     }
 
+    /**
+     * ViewHolder class for recent chat room items.
+     *
+     * Holds references to views within the {@code recent_chat_recycler_row.xml} layout.
+     */
     class ChatroomModelViewHolder extends RecyclerView.ViewHolder {
-        TextView usernameText, lastMessageText, lastMessageTime;
+        /** Displays the other user's name. Binds to {@code user_name_text}. */
+        TextView usernameText;
+        /** Displays the content of the last message. Binds to {@code last_message_text}. */
+        TextView lastMessageText;
+        /** Displays the time of the last message. Binds to {@code last_message_time_text}. */
+        TextView lastMessageTime;
+        /** Displays the other user's profile picture. Binds to {@code profile_pic_image_view}. */
         ImageView profilePic;
+
+        /**
+         * Constructs a new ChatroomModelViewHolder.
+         *
+         * @param itemView The root view of the recent chat row layout.
+         */
         public ChatroomModelViewHolder(@NonNull View itemView) {
             super(itemView);
             usernameText = itemView.findViewById(R.id.user_name_text);

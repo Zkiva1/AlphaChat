@@ -19,15 +19,36 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Activity for the second step of user registration: password creation.
+ *
+ * This activity handles password validation and initiates the Firebase account
+ * creation process using the email provided in the previous step.
+ *
+ * Firebase Authentication.
+ */
 public class RegisterPassword extends AppCompatActivity {
 
+    /** The user's email address passed from the previous activity. */
     String email;
+    /** Input fields for password and confirmation. Binds to {@code register_password} and {@code confirm_register_password}. */
     EditText passwordInput, confirmPasswordInput;
+    /** Button to complete the account creation step. Binds to {@code login_next_btn}. */
     Button nextBtn;
+    /** Progress bar for account creation feedback. Binds to {@code register_password_progress_bar}. */
     ProgressBar progressBar;
 
+    /** Reference to Firebase Authentication service. */
     FirebaseAuth mAuth;
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components, retrieves the email from intent extras, and sets
+     * up the account creation logic.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

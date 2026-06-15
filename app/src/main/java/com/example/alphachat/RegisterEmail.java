@@ -17,15 +17,35 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Activity for the first step of user registration: email entry.
+ *
+ * This activity validates the user's email format and passes it to the next
+ * registration step.
+ *
+ * Firebase Authentication.
+ */
 public class RegisterEmail extends AppCompatActivity {
 
+    /** Input field for the user's email address. Binds to {@code register_email}. */
     EditText emailInput;
+    /** Button to proceed to the next registration step. Binds to {@code next_to_password}. */
     Button nextBtn;
+    /** Progress bar for async operations (currently unused). Binds to {@code register_email_progress_bar}. */
     ProgressBar progressBar;
 
+    /** Reference to Firebase Authentication service. */
     FirebaseAuth mAuth;
 
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components and sets up the click listener for email validation
+     * and navigation.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

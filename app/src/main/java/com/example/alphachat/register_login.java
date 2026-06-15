@@ -22,14 +22,36 @@ import com.example.alphachat.model.UserModel;
 import com.example.alphachat.utils.FirebaseUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Activity that serves as the combined entry point for login and registration.
+ *
+ * This activity handles user authentication via email and password. It also
+ * provides a path to initiate a new account registration and handles routing
+ * based on the user's profile completeness upon successful login.
+ *
+ * Firebase Authentication, Cloud Firestore {@code users} collection.
+ */
 public class register_login extends AppCompatActivity {
 
+    /** Buttons for login and registration actions. Binds to {@code login_btn} and {@code register_btn}. */
     Button login_btn, register_btn;
+    /** TextView to trigger password reset. Binds to {@code forgot_password_tv}. */
     TextView forgotPasswordTv;
+    /** Input fields for user credentials. Binds to {@code login_email} and {@code login_password}. */
     EditText login_email, login_password;
+    /** Reference to Firebase Authentication service. */
     FirebaseAuth mAuth;
+    /** Progress bar for authentication feedback. Binds to {@code login_progress_bar}. */
     ProgressBar progressBar;
 
+    /**
+     * Called when the activity is first created.
+     *
+     * Initializes UI components, sets up Edge-to-Edge display, and configures
+     * listeners for login, registration, and password recovery.
+     *
+     * @param savedInstanceState If non-null, this activity is being re-constructed.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
